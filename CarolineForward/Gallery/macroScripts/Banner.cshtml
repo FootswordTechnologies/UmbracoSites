@@ -1,0 +1,8 @@
+﻿@{
+    var bannerImage = @Model.AncestorOrSelf().Banner;
+}
+
+<header>
+    <img src="/ImageGen.ashx?image=@bannerImage" alt="@Model.AncestorOrSelf().ArtistName"/>
+    <h1><a href="/">@Dictionary.SiteName</a></h1>
+</header>

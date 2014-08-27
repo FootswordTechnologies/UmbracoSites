@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<imageIndex>
+  <image>
+    <originalFileName>buzzdetail.jpg</originalFileName>
+    <size>172372</size>
+    <dateLastModified>Tue, 11 Sep 2012 14:13:36 GMT</dateLastModified>
+    <width>333</width>
+    <height>500</height>
+    <cachedImage>
+      <fileName>hq1gpgso.jpeg</fileName>
+      <dateCreated>Tue, 11 Sep 2012 14:13:46 GMT</dateCreated>
+      <dateLastAccessed>Mon, 24 Sep 2012 11:18:32 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <width>133</width>
+      <height>200</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+  </image>
+</imageIndex>

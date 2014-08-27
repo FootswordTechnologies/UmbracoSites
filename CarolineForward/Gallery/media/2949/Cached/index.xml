@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<imageIndex>
+  <image>
+    <originalFileName>banner.jpg</originalFileName>
+    <size>116457</size>
+    <dateLastModified>Mon, 24 Sep 2012 11:41:19 GMT</dateLastModified>
+    <width>2200</width>
+    <height>374</height>
+    <cachedImage>
+      <fileName>xcb0r13t.jpeg</fileName>
+      <dateCreated>Mon, 24 Sep 2012 11:45:27 GMT</dateCreated>
+      <dateLastAccessed>Fri, 22 Aug 2014 18:21:39 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <rotate>0</rotate>
+      <flip />
+      <colorMode />
+      <crop />
+      <width>800</width>
+      <height>374</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+  </image>
+</imageIndex>

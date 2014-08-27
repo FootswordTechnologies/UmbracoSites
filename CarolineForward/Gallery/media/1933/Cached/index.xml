@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<imageIndex>
+  <image>
+    <originalFileName>muggedstageset.jpg</originalFileName>
+    <size>268649</size>
+    <dateLastModified>Mon, 10 Sep 2012 20:52:49 GMT</dateLastModified>
+    <width>667</width>
+    <height>500</height>
+    <cachedImage>
+      <fileName>mcgiaurj.jpeg</fileName>
+      <dateCreated>Mon, 10 Sep 2012 20:53:31 GMT</dateCreated>
+      <dateLastAccessed>Mon, 24 Sep 2012 11:18:32 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <width>267</width>
+      <height>200</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+  </image>
+</imageIndex>

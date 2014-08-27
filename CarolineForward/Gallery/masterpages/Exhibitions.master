@@ -1,0 +1,12 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/masterpages/Master.master" AutoEventWireup="true" %>
+<asp:Content ContentPlaceHolderID="pageContent" runat="server">
+<umbraco:Macro Alias="ListExhibitions" runat="server" />
+    
+</asp:Content>
+<asp:Content ContentPlaceHolderID="scripts" runat="server">
+ <script type="text/javascript">
+        $(function () {
+            $('.pictures a').lightBox();
+        });
+    </script>
+</asp:Content>

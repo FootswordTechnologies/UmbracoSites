@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<imageIndex>
+  <image>
+    <originalFileName>bluebellsweb.jpg</originalFileName>
+    <size>53615</size>
+    <dateLastModified>Mon, 24 Sep 2012 11:41:22 GMT</dateLastModified>
+    <width>502</width>
+    <height>500</height>
+    <cachedImage>
+      <fileName>msfuueql.jpeg</fileName>
+      <dateCreated>Fri, 22 Aug 2014 18:21:40 GMT</dateCreated>
+      <dateLastAccessed>Fri, 22 Aug 2014 18:21:40 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <rotate>0</rotate>
+      <flip />
+      <colorMode />
+      <crop />
+      <width>100</width>
+      <height>100</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+  </image>
+</imageIndex>

@@ -1,0 +1,12 @@
+Talk on Friday
+1. Add more space between exhibitions/community stuff. Done
+2. 1st expo should line up with top button. Not relevant as have moved title down.
+3. Expo images should line up with top of text, not expo title.Done
+4. Gallery: line up top of pix with top button (seen in IE9).See 2
+Email over weekend
+1.Sample images for gallery page Still Life:Jug & Lemons, People: Looking Back, Landscape FenscapeII
+2. Allow Caroline to choose and change this image.:done
+3. Use Sky-header in dropbox for banner (although she has attached one to email as well).
+4. Remove brown colour from buttons. Pink is distracting.: removed both
+5. Put page title on the page, not in the banner.: Done
+5. Answer remaining points: ie can she playwith button  colours - inclined to say no

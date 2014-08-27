@@ -1,0 +1,15 @@
+﻿@*
+comments
+*@
+
+<ul id="coverImages">
+@foreach(var genre in Model.Genres){
+    <li>
+        <a href="@genre.Url">
+            <img src="/ImageGen.ashx?image=@genre.coverImage&height=200" alt="@genre.Name"/>
+        </a>
+        <h3><a href="@genre.Url">@genre.Name</a></h3>       
+    </li>
+    }
+
+</ul>

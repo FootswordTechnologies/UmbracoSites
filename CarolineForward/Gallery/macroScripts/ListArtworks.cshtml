@@ -1,0 +1,46 @@
+﻿@*
+comments
+*@
+@using System.Text
+@inherits umbraco.MacroEngines.DynamicNodeContext
+
+@{
+    const int DEFAULT_PAGE_SIZE = 8;
+    int pageSize;
+    int page;
+    pageSize = Model.Parent.pageSize > 0 ? Model.Parent.pageSize : DEFAULT_PAGE_SIZE;
+    if(!int.TryParse(Request.QueryString["page"], out page)){
+        page = 1;
+    }
+    var items =  Model.Artworks.Where("Visible"); 
+    int totalItems = items.Count();
+    int totalPages = (int)Math.Ceiling((double)totalItems/(double)pageSize);
+    
+    if(page > totalPages){
+        page = totalPages;
+    }
+    else if (page < 1){
+        page = 1;
+    }
+    const int imageHeight = 120;
+}
+  <ul class="gallery">
+        @foreach(var item in items.Paged(page, pageSize))
+        {
+            var caption = new StringBuilder();
+            caption.Append(item.Name);
+            if(!string.IsNullOrEmpty(item.description))
+            {
+                caption.Append(string.Format(" : {0}", item.description));
+            }
+            <li>
+                <a href="@item.imageFile" title="@caption.ToString()">
+                    <img src="/ImageGen.ashx?image=@item.imageFile&height=@imageHeight" alt="@item.Name"/>
+                </a>
+                <h3>@item.Name</h3>
+            </li>
+    }
+    </ul>
+    
+@DiploHelpers.GeneratePaging(page, totalPages)    
+ 

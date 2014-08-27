@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<imageIndex>
+  <image>
+    <originalFileName>jug_and_lemons.jpg</originalFileName>
+    <size>52001</size>
+    <dateLastModified>Mon, 24 Sep 2012 11:41:11 GMT</dateLastModified>
+    <width>502</width>
+    <height>500</height>
+    <cachedImage>
+      <fileName>dbon0btr.jpeg</fileName>
+      <dateCreated>Sat, 18 May 2013 05:48:30 GMT</dateCreated>
+      <dateLastAccessed>Thu, 03 Oct 2013 13:19:42 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <rotate>0</rotate>
+      <flip />
+      <colorMode />
+      <crop />
+      <width>201</width>
+      <height>200</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+  </image>
+</imageIndex>

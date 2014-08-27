@@ -1,0 +1,13 @@
+﻿@*
+comments
+*@
+@using System.Text
+@{
+    var classes = new StringBuilder("mainText");
+    if(Model.largerText){
+        classes.Append(" largerText");
+    }
+}
+<div class="@classes.ToString()">
+    @Model.pageBody
+</div>

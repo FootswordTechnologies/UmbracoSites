@@ -1,0 +1,526 @@
+@import url("MeyerReset.css");
+/*
+    Amanda Earlam
+    September 2010
+    Styles for Caroline's site
+*/
+
+
+/*
+    Colours from Colourlovers
+    Palette is Seasonal 3
+    @November #05697a (turq)
+    @December #674f4f (deep brown)
+    @January  #bcdbff (pale blue)
+    @February #ff8bb1 (pink)
+    @March    #a2ddb1 (pale green)
+    vanilla ice cream #FCF9F0
+    grey blue A3A9B7
+    pale teal #97DBCB (pale teal)
+    call it all off #425675 (navy grey)
+    sea blue 8DA9C5
+    offﬂblack #2A363B
+*/
+
+strong{
+font-weight: bolder;
+}
+
+html
+{
+    background-color: #2A363B;/*off-black*/
+    /*background-color: #f4f4f4;new lighter colour*/
+    color:#425675;
+    font-family:Verdana, Arial, Sans-Serif;
+    font-size:11px;
+}
+
+body 
+{
+    width:95%;
+    margin:10px auto;
+   /* background-color:#B1B0B8; bluegray*/
+    background-color: #f4f4f4;
+    border-radius:10px;
+}
+
+header
+{
+    display:block;
+    border-radius: 10px 10px /10px 10px;
+    border-bottom:2px solid #ff8bb1;
+    overflow:hidden; 
+    height:100px; 
+    position:relative;
+}
+
+header img {
+    width:100%;
+    height:auto;
+    border-radius: 10px 10px /10px 10px;
+}
+
+header h1
+{
+    padding:20px 0;
+    color:#425675; 
+    font-size:4em;
+    font-weight:normal; 
+    position:absolute; 
+    top:0; 
+    left:0;
+    text-align: center;
+    line-height:100%;
+    width: 100%;
+   /* text-shadow: 2px 2px 2px rgba(52,56,56, .7);*/
+}
+
+header h1 a{
+    color:inherit;
+    text-decoration:none;
+}
+
+h2
+{
+    font-size:2.5em;
+    font-weight:normal;
+    padding-bottom:20px;
+}
+
+h3
+{
+    font-size:1.8em;
+    font-weight:normal;
+}
+
+h4
+{
+    font-size:1.5em;
+    font-weight:normal;
+}
+
+div#main{
+    margin-top:20px;
+    padding: 10px;
+}
+
+aside#mainNav{
+    float:left;
+    width:20%;    
+}
+
+article#pageContent{
+    display:block;
+    float:right;
+    width:80%;
+}
+
+nav
+{
+    display:block;
+    width: 80%;
+}
+
+nav ul
+{
+    list-style:none;
+}
+
+nav ul li
+{
+    list-style:none;
+    margin:0 auto;
+    margin-bottom:.3em;
+}
+
+nav ul li a
+{
+    text-decoration:none;
+    font-size:1.2em;
+    color:White;
+    background-color:#2A363B;/* of-black */
+    padding:.4em;    
+    display:block;
+    width:90%;
+}
+
+nav ul li a:hover
+{
+    background-color:#8DA9C5; /* sea blue */
+}
+
+nav ul li a.selected
+{
+   background-color:#425675; /*Dark blue*/
+    color:White;
+}
+
+nav ul ul{
+    margin-top:.3em;
+}
+nav ul ul li a{
+ /*   background-color:#ff8bb1; pink */
+}
+
+footer
+{
+    clear:both;
+    display:block;
+    height:90px;
+    border-top:2px solid #8DA9C5;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px;
+}
+
+footer p
+{
+    margin:3px;
+    text-align:right;
+    width:15em;
+    float:right;
+}
+
+footer p img
+{
+    float:right;
+    margin:3px;
+    vertical-align:middle;
+    border:0;
+}
+
+footer p a
+{
+    text-decoration:none;
+    border:none;
+    color:inherit;
+    font-size:.8em;
+}
+
+footer ul{
+    display:inline-block;
+    margin-left:30px;
+    margin-top:20px;
+}
+
+footer ul li{
+    display:inline-block;
+    padding:0 10px;
+    border-left:1px solid #425675;
+}
+footer ul li:first-child{
+    border:none;
+}
+
+footer ul li a{color:#425675; display:block;padding:4px;text-decoration:none;}
+footer ul li a:hover{color:White;background-color:#425675;}
+
+/*******************************************/
+
+div.mainText
+{ 
+    overflow:hidden;
+    padding-right:10px;
+    padding-bottom:10px;
+}
+
+.homePage, .largerText p{font-size:130%;}
+
+div.mainText p
+{
+    margin-bottom:10px;
+}
+
+ul.gallery
+{
+    list-style:none;
+    overflow:auto;
+}
+
+ul.gallery li
+{
+    margin:5px;
+    margin-top:1em;
+    display:inline-block;
+    vertical-align:top;
+}
+
+ul.gallery li h3
+{
+    font-size:1em;
+    font-weight:normal;
+    width:8em;
+    text-align:center;
+}
+
+ul.gallery li img
+{
+    display:block;
+    margin:5px auto;
+    border:1px solid White;
+    border-radius:1px;
+}
+
+ul#coverImages{
+    display:inline-block;
+}
+
+ul#coverImages li{
+    display:inline-block;
+    padding-bottom:15px;
+}
+
+ul#coverImages li h3{
+    text-align:center;
+}
+
+ul#coverImages li h3 a{
+    color:inherit;
+    text-decoration:none;
+}
+
+ul#coverImages li img{
+    margin:10px;
+    margin-left:0;
+    border:2px solid White;
+    border-radius:5px;
+    box-shadow:3px 3px 6px #666;
+}
+
+ul.pager
+{
+    width:100%;
+    clear:both;
+    padding:0.5em 0 0 0;
+    display:block;
+}
+
+ul.pager li{display:inline-block;}
+
+ul.pager a
+{
+    font-size:1.1em;
+    color:White;
+    background-color:#8DA9C5;
+    text-decoration:none;
+    padding:0 .4em;
+}
+
+ul.pager a:hover
+{
+    background-color:#ff8bb1;
+}
+
+ul.pager a.selected
+{
+    background-color:#05697a;
+}
+
+/**************** Home Page *****************************/
+img#introImage, img#aboutImage
+{
+    float:right;
+    margin:10px;
+    width:350px;
+    height:350px;
+    margin-right:0;
+    margin-top:0;
+    border:5px solid White;
+    border-radius:5px;
+    box-shadow:3px 3px 6px #666;
+}
+
+
+
+/********************** Exhibition  page *******************/
+ul.exhibitions
+{
+    list-style:none;
+}
+
+ul.exhibitions li
+{
+    clear:both;
+    overflow: hidden;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background: rgba(255,255,255, .6);
+}
+
+ul.exhibitions li h3, .previousExhibitions h3{
+   padding-bottom:10px;
+}
+
+ul.exhibitions li h4{
+    padding-bottom:10px;
+    font-size: 130%;
+}
+
+.previousExhibitions li h4 {
+    font-size: 1.5em;
+    padding: 0;
+  }
+  
+ .previousExhibitions li h5 {
+     font-size: 130%;
+ }
+
+ul.exhibitions div
+{
+    width:50%;
+    float:left;
+}
+
+ul.exhibitions li img
+{
+    margin:3px;
+    border: 1px solid white;
+    max-height: 200px;
+    float: left;
+}
+
+ul.exhibitions li a
+{
+    text-decoration:none;
+}
+
+ul.exhibitions p, ul.exhibitions h2 {
+    padding-right: 10px;
+}
+
+ul.exhibitions p, .previousExhibitions p{
+    font-size:1em;
+    padding-bottom: 10px;
+    text-align:justify;
+}
+
+ div.previousExhibitions p {
+     padding-bottom: 0;
+ }
+ 
+ .previousExhibitions li {
+     margin-bottom: 5px;
+ }
+
+.previousExhibitions
+{
+    margin-bottom: 10px;
+    padding: 20px;
+    background: rgba(255,255,255, .2);
+}
+
+/************************ Pricing page *******************/
+ul.pricing
+{
+    margin-top:10px;
+}
+
+ul.pricing li
+{
+    border:2px solid #8DA9C5; /*(sea blue)*/
+    margin:3px;
+    padding: 3px;
+    overflow:hidden;
+    width:200px;
+    display:inline-block;
+}
+
+ul.pricing li h4
+{
+    margin:3px;
+}
+
+ul.pricing li img
+{
+    height:70px;
+    margin:3px 3px 3px 3px;
+}
+
+ul.pricing li p
+{
+    position:relative;
+}
+
+ul.pricing li p span
+{
+    position:absolute;
+    right:3px;
+}
+
+ul.pricing li p.email
+{
+    float:right;
+}
+
+/************** Lightbox ****************************/
+/* Make changes here, rather than in the imported css file itself.*/
+#lightbox-container-image-box 
+{
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    
+
+}
+#lightbox-container-image-data-box 
+{
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+}
+
+/*********************** About page ******************************/
+img#ouseLife
+{
+    vertical-align:middle;
+    margin:5px;
+    float:left;
+    border:none;
+}
+
+/**************** Mozilla/Webkit **********************************/
+body
+{
+    -moz-border-radius:10px;
+}
+
+header
+{
+    -moz-border-radius-topleft:10px;
+    -moz-border-radius-topright:10px;
+}
+
+footer
+{
+    -moz-border-radius-bottomleft:10px;
+    -moz-border-radius-bottomright:10px;
+}
+
+img#introImage, img#aboutImage
+{
+    -moz-border-radius:5px;
+    -webkit-box-shadow:3px 3px 6px #666;
+    -moz-box-shadow:3px 3px 6px #666;
+}
+
+ul.gallery li img
+{
+    -moz-border-radius:5px;
+}
+
+#lightbox-container-image-box 
+{
+    -moz-border-radius-topleft:5px;
+    -moz-border-radius-topright:5px;
+}
+#lightbox-container-image-data-box 
+{
+    -moz-border-radius-bottomleft:5px;
+    -moz-border-radius-bottomright:5px;
+}
+
+/* copyright */
+ol{list-style:decimal;margin-left:2em;}
+
+
+
+
+
+/* EDITOR PROPERTIES - PLEASE DON'T DELETE THIS LINE TO AVOID DUPLICATE PROPERTIES */

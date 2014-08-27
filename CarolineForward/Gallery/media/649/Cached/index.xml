@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<imageIndex>
+  <image>
+    <originalFileName>barbarasamazingcoat400.jpg</originalFileName>
+    <size>222353</size>
+    <dateLastModified>Mon, 24 Sep 2012 11:41:25 GMT</dateLastModified>
+    <width>400</width>
+    <height>935</height>
+    <cachedImage>
+      <fileName>pckg5ndc.jpeg</fileName>
+      <dateCreated>Sat, 18 May 2013 05:48:35 GMT</dateCreated>
+      <dateLastAccessed>Fri, 22 Aug 2014 18:21:29 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <rotate>0</rotate>
+      <flip />
+      <colorMode />
+      <crop />
+      <width>51</width>
+      <height>120</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+    <cachedImage>
+      <fileName>nk43cv2m.jpeg</fileName>
+      <dateCreated>Fri, 22 Aug 2014 18:21:40 GMT</dateCreated>
+      <dateLastAccessed>Fri, 22 Aug 2014 18:21:40 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <rotate>0</rotate>
+      <flip />
+      <colorMode />
+      <crop />
+      <width>43</width>
+      <height>100</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+  </image>
+</imageIndex>

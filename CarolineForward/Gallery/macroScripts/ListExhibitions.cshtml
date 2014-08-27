@@ -1,0 +1,56 @@
+﻿@*
+comments
+*@
+@inherits umbraco.MacroEngines.DynamicNodeContext
+@{
+    var children = Model.Children;
+}
+<ul class="exhibitions">
+    @foreach(var item in children)
+    {
+        if(!item.pastEvent)
+        {
+        <li>            
+            <h3>@item.Name</h3>
+            <div>
+                @if(item.Subheader.Length > 0)
+                {
+                    <h4>@item.Subheader</h4>
+                }
+                @Html.Raw(item.Description.ToString())
+            </div>
+            <div class="pictures">
+                @foreach(var picture in item.Children)
+                {
+                    <a href="@picture.image" title="@picture.Name">
+                    <img src="/ImageGen.ashx?image=@picture.image" alt="@picture.Name" title="@picture.Name"/></a>
+                }
+            </div>
+        </li>
+        }
+    }
+    </ul>
+    
+    @* Now do the same for past events
+    *@
+    @if(Model.Name == "Exhibitions")
+    {
+        <section class="previousExhibitions">
+            <h3>Previous Exhibitions</h3>
+            <ul>
+            @foreach(var item in children){
+                if(item.pastEvent)
+                {
+                    <li>
+                        <h4>@item.Name</h4>
+                        @if(item.Subheader.Length > 0)
+                        {
+                            <h5>@item.Subheader</h5>
+                        }
+                        @Html.Raw(item.Description.ToString())
+                    </li>
+                 }
+            }
+        </ul>
+        </section>
+    }

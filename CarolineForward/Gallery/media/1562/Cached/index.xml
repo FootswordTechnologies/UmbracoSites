@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<imageIndex>
+  <image>
+    <originalFileName>six_trees.jpg</originalFileName>
+    <size>387161</size>
+    <dateLastModified>Mon, 24 Sep 2012 11:40:56 GMT</dateLastModified>
+    <width>1772</width>
+    <height>1807</height>
+    <cachedImage>
+      <fileName>0wpzkr02.jpeg</fileName>
+      <dateCreated>Fri, 22 Aug 2014 18:21:25 GMT</dateCreated>
+      <dateLastAccessed>Fri, 22 Aug 2014 18:21:25 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <rotate>0</rotate>
+      <flip />
+      <colorMode />
+      <crop />
+      <width>118</width>
+      <height>120</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+  </image>
+</imageIndex>

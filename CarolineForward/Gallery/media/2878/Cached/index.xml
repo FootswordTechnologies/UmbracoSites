@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<imageIndex>
+  <image>
+    <originalFileName>blacksmith.jpg</originalFileName>
+    <size>394264</size>
+    <dateLastModified>Tue, 11 Sep 2012 16:09:55 GMT</dateLastModified>
+    <width>665</width>
+    <height>500</height>
+    <cachedImage>
+      <fileName>5ravpgal.jpeg</fileName>
+      <dateCreated>Tue, 11 Sep 2012 16:12:18 GMT</dateCreated>
+      <dateLastAccessed>Mon, 24 Sep 2012 11:18:33 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <width>266</width>
+      <height>200</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+  </image>
+</imageIndex>

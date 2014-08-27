@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<imageIndex>
+  <image>
+    <originalFileName>fenscapexiii.jpg</originalFileName>
+    <size>45934</size>
+    <dateLastModified>Mon, 24 Sep 2012 11:40:50 GMT</dateLastModified>
+    <width>494</width>
+    <height>500</height>
+    <cachedImage>
+      <fileName>crirwc3l.jpeg</fileName>
+      <dateCreated>Fri, 22 Aug 2014 18:21:23 GMT</dateCreated>
+      <dateLastAccessed>Fri, 22 Aug 2014 18:21:23 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <rotate>0</rotate>
+      <flip />
+      <colorMode />
+      <crop />
+      <width>119</width>
+      <height>120</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+  </image>
+</imageIndex>

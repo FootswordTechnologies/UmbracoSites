@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<imageIndex>
+  <image>
+    <originalFileName>eelcatcher.jpg</originalFileName>
+    <size>201553</size>
+    <dateLastModified>Tue, 11 Sep 2012 16:10:26 GMT</dateLastModified>
+    <width>344</width>
+    <height>500</height>
+    <cachedImage>
+      <fileName>pcyhcye4.jpeg</fileName>
+      <dateCreated>Tue, 11 Sep 2012 16:12:18 GMT</dateCreated>
+      <dateLastAccessed>Mon, 24 Sep 2012 11:18:33 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <width>138</width>
+      <height>200</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+  </image>
+</imageIndex>

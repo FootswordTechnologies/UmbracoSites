@@ -1,0 +1,9 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/masterpages/Master.master" AutoEventWireup="true" %>
+<asp:Content ContentPlaceHolderID="pageContent" runat="server">
+  <div class="mainText homePage">
+    <umbraco:Item field="pageBody" runat="server" />
+  </div>
+</asp:Content>
+<asp:Content ContentPlaceHolderID="scripts" runat="server">
+ 
+</asp:Content>

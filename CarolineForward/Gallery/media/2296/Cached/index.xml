@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<imageIndex>
+  <image>
+    <originalFileName>apples.jpg</originalFileName>
+    <size>220848</size>
+    <dateLastModified>Sat, 05 May 2012 14:44:54 GMT</dateLastModified>
+    <width>492</width>
+    <height>500</height>
+    <cachedImage>
+      <fileName>dyveu0t5.jpeg</fileName>
+      <dateCreated>Sat, 05 May 2012 14:44:57 GMT</dateCreated>
+      <dateLastAccessed>Sat, 25 Aug 2012 16:14:57 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <width>118</width>
+      <height>120</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+    <cachedImage>
+      <fileName>s44di0b3.jpeg</fileName>
+      <dateCreated>Sat, 25 Aug 2012 16:45:21 GMT</dateCreated>
+      <dateLastAccessed>Sun, 23 Sep 2012 18:29:34 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <width>197</width>
+      <height>200</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+  </image>
+</imageIndex>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<imageIndex>
+  <image>
+    <originalFileName>jug_lemons_and_pepperweb.jpg</originalFileName>
+    <size>42515</size>
+    <dateLastModified>Fri, 27 Apr 2012 14:44:50 GMT</dateLastModified>
+    <width>494</width>
+    <height>500</height>
+    <cachedImage>
+      <fileName>rb5pnl5g.jpeg</fileName>
+      <dateCreated>Fri, 27 Apr 2012 18:47:06 GMT</dateCreated>
+      <dateLastAccessed>Thu, 20 Sep 2012 14:20:02 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <width>119</width>
+      <height>120</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+    <cachedImage>
+      <fileName>psh1d4f5.jpeg</fileName>
+      <dateCreated>Mon, 28 May 2012 07:56:03 GMT</dateCreated>
+      <dateLastAccessed>Mon, 27 Aug 2012 16:35:17 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <width>99</width>
+      <height>100</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+  </image>
+</imageIndex>

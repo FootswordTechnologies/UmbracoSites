@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<imageIndex>
+  <image>
+    <originalFileName>millstones_web.jpg</originalFileName>
+    <size>278474</size>
+    <dateLastModified>Fri, 27 Apr 2012 14:45:02 GMT</dateLastModified>
+    <width>498</width>
+    <height>500</height>
+    <cachedImage>
+      <fileName>skxu1fn3.jpeg</fileName>
+      <dateCreated>Fri, 27 Apr 2012 14:52:03 GMT</dateCreated>
+      <dateLastAccessed>Thu, 20 Sep 2012 13:03:01 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <width>120</width>
+      <height>120</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+    <cachedImage>
+      <fileName>uo5eb4tj.jpeg</fileName>
+      <dateCreated>Mon, 28 May 2012 07:57:09 GMT</dateCreated>
+      <dateLastAccessed>Mon, 27 Aug 2012 16:35:17 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <width>100</width>
+      <height>100</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+  </image>
+</imageIndex>

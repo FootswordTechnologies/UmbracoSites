@@ -1,0 +1,49 @@
+﻿@*
+comments
+*@
+@inherits umbraco.MacroEngines.DynamicNodeContext
+
+@{
+    const int DEFAULT_PAGE_SIZE = 10;
+    int pageSize;
+    int page;
+    pageSize = Model.pageSize > 0 ? Model.pageSize : DEFAULT_PAGE_SIZE;
+    if(!int.TryParse(Request.QueryString["page"], out page)){
+        page = 1;
+    }
+
+    var items = @Model.Parent.Descendants("Artwork").OrderBy("name");
+    int totalItems = items.Count();
+    int totalPages = (int)Math.Ceiling((double)totalItems/(double)pageSize);
+    
+    if(page > totalPages){
+        page = totalPages;
+    }
+    else if (page < 1){
+        page = 1;
+    }
+}
+    <h3>Email <a href="mailto://caroline@carolineforward.co.uk">Caroline</a> if you would like to buy any of these works</h3>
+@DiploHelpers.GeneratePaging(page, totalPages)    
+    <ul class="pricing">
+    @foreach (var item in items.Paged(page, pageSize))
+    {
+    <li>
+        <h4>@item.Name</h4>
+        <img src="/ImageGen.ashx?image=@item.imageFile&height=100" alt="@item.Name"/>
+        <p><strong>Category</strong>: <span>@item.Parent.Name</span><br />
+        <strong>Dimensions</strong>: <span>@item.Dimensions</span><br />
+        <strong>Medium</strong>: <span>@item.Medium</span><br />
+    @if(!item.forSale)
+    { 
+       <strong>Not For Sale</strong>
+    }else if(item.sold){
+        <strong>Sold</strong>
+    }else{
+        <strong>Price: </strong><span>&pound;@item.price</span>
+    }       
+    </p>
+    </li>
+    }
+    </ul>
+@DiploHelpers.GeneratePaging(page, totalPages)    
