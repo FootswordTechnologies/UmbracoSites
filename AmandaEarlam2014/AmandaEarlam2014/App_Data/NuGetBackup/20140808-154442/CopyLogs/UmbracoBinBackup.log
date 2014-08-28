@@ -1,0 +1,44 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows                              
+-------------------------------------------------------------------------------
+
+  Started : Fri Aug 08 15:44:45 2014
+
+   Source : C:\Websites\UmbracoSites\AmandaEarlam2014\AmandaEarlam2014\bin\
+     Dest : C:\Websites\UmbracoSites\AmandaEarlam2014\AmandaEarlam2014\App_Data\NuGetBackup\20140808-154442\bin\
+
+    Files : *.*
+	    
+  Options : *.* /S /E /COPY:DAT /R:1000000 /W:30 
+
+------------------------------------------------------------------------------
+
+	                  13	C:\Websites\UmbracoSites\AmandaEarlam2014\AmandaEarlam2014\bin\
+	    New File  		   1.0 m	EntityFramework.dll  0%   23%   46%   70%   93%  100%  
+	    New File  		   45416	Microsoft.Web.Infrastructure.dll  0%  100%  
+	    New File  		  391680	Newtonsoft.Json.dll  0%   33%   66%  100%  
+	    New File  		  168544	System.Net.Http.Formatting.dll  0%   77%  100%  
+	    New File  		  323168	System.Web.Http.dll  0%   40%   81%  100%  
+	    New File  		   73312	System.Web.Http.WebHost.dll  0%  100%  
+	    New File  		  506976	System.Web.Mvc.dll  0%   25%   51%   77%  100%  
+	    New File  		   54912	System.Web.Optimization.dll  0%  100%  
+	    New File  		  270936	System.Web.Providers.dll  0%   48%   96%  100%  
+	    New File  		  266888	System.Web.Razor.dll  0%   49%   98%  100%  
+	    New File  		   41048	System.Web.WebPages.Deployment.dll  0%  100%  
+	    New File  		  204400	System.Web.WebPages.dll  0%   64%  100%  
+	    New File  		   39536	System.Web.WebPages.Razor.dll  0%  100%  
+
+------------------------------------------------------------------------------
+
+               Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :         1         0         1         0         0         0
+   Files :        13        13         0         0         0         0
+   Bytes :    3.34 m    3.34 m         0         0         0         0
+   Times :   0:00:01   0:00:01                       0:00:00   0:00:00
+
+
+   Speed :             2862398 Bytes/sec.
+   Speed :             163.787 MegaBytes/min.
+
+   Ended : Fri Aug 08 15:44:47 2014

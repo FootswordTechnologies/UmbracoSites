@@ -1,0 +1,65 @@
+﻿@{
+    /* RSS FEED */
+}  
+@using System.Linq
+@using System.Xml.Linq
+@using umbraco.MacroEngines
+@using uBlogsy.Common.Extensions
+@using uBlogsy.Common.Helpers
+@using uBlogsy.BusinessLogic
+@{
+    // get all posts
+    // get tag, category, or author from query string
+    var tag = Request.QueryString["tag"];
+    var category = Request.QueryString["category"];
+    var author = Request.QueryString["author"];
+    var searchTerm = Request.QueryString["search"];
+    var commenter = Request.QueryString["commenter"];
+    
+    IEnumerable<DynamicNode> posts = PostService.Instance.GetPosts(Model.Id, tag, category, author, searchTerm, commenter, 0, int.MaxValue);
+       
+    string lastPubDate;
+    if (posts.Count() == 0)
+    {
+        lastPubDate = DateTime.Now.ToString();
+    }
+    else
+    {
+        lastPubDate = posts.FirstOrDefault().GetProperty("uBlogsyPostDate").Value;
+    }
+
+
+    
+   
+    // get landing page
+    var landing = DataService.Instance.GetLanding(Model.Id);
+
+    string qs = Request.QueryString.ToString();
+    
+    // get blog url
+    string blogUrl = Request.Url.AbsoluteUri.Replace("?", string.Empty).Replace(Model.Url, string.Empty).Replace(qs, string.Empty).TrimEnd("/".ToCharArray());
+    <rss version="2.0">
+        <channel>
+            <title>@landing.uBlogsyRssTitle</title>
+            <description>@landing.uBlogsyRssDescription</description>
+            <copyright>@landing.uBlogsyRssCopyright</copyright>
+            @*<image>@landing.uBlogsyRssImage</image>*@
+            <link>@blogUrl</link>
+            <lastBuildDate>@lastPubDate.FormatDateTime("ddd, dd MMMM yyyy HH:mm:ss")</lastBuildDate>
+            <pubDate>@lastPubDate.FormatDateTime("ddd, dd MMMM yyyy HH:mm:ss")</pubDate>
+
+            @foreach (var p in posts)
+            {
+                <item>
+                    <title>@p.GetProperty("uBlogsyContentTitle").Value</title>
+                    <author>@p.GetProperty("uBlogsyPostAuthor").Value</author>
+                    <comments>@blogUrl@p.Url</comments>
+                    <description>@p.GetProperty("uBlogsyContentBody").Value.StripHtml().Trim()</description>
+                    <link>@blogUrl@p.Url</link>
+                    <guid>@blogUrl@p.Url</guid>
+                    <pubDate>@p.GetProperty("uBlogsyPostDate").Value.FormatDateTime("ddd, dd MMMM yyyy HH:mm:ss") </pubDate>
+                </item>
+            }
+        </channel>
+    </rss>
+}

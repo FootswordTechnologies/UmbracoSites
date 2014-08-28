@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<EmailTempaltes>
+    <EmailTemplate name="AdminContact">
+        <Subject>Contact notification</Subject>
+        <HtmlBody>
+            <html>
+                <body style="font-family:Arial; font-size:12px;">
+                    <p>
+                        ##CommenterName## has sent you a message...
+                    </p>
+                    <p>Sender email: ##CommenterEmail##</p>
+                    <p>Sender website: ##CommenterWebsite##</p>
+
+                    <p style="border-top:1px dotted lightgrey; border-bottom:1px dotted lightgrey; padding: 10px 0px">
+                        <span style="font-size:18px;">"</span>##CommentBody##<span style="font-size:18px;">"</span>
+                    </p>
+
+                    <p style="color:lightgrey; font-size:10px; float:right;">Powered by uBlogsy and Umbraco</p>
+                </body>
+            </html>
+        </HtmlBody>
+    </EmailTemplate>
+
+    <EmailTemplate name="AdminCommentNotification">
+        <Subject>Comment notification</Subject>
+        <HtmlBody>
+            <html>
+                <body style="font-family:Arial; font-size:12px;">
+                    <p>
+                        ##CommenterName## has left a comment on the post "##PostTitle##" (##PostUrl##)...
+                    </p>
+                    <p style="border-top:1px dotted lightgrey; border-bottom:1px dotted lightgrey; padding: 10px 0px">
+                        <span style="font-size:18px;">"</span>##CommentBody##<span style="font-size:18px;">"</span>
+                    </p>
+                   
+                    <p style="color:lightgrey; font-size:10px; float:right;">Powered by uBlogsy and Umbraco</p>
+
+                </body>
+            </html>
+        </HtmlBody>
+    </EmailTemplate>
+
+    <EmailTemplate name="CommentNotification">
+        <Subject>Comment notification</Subject>
+        <HtmlBody>
+            <html>
+                <body style="font-family:Arial; font-size:12px;">
+                    <p>Hi ##RecipientName##</p>
+                    <p>
+                        ##CommenterName## has left a comment on the post "##PostTitle##"...
+                    </p>
+                    <p style="border-top:1px dotted lightgrey; border-bottom:1px dotted lightgrey; padding: 10px 0px">
+                        <span style="font-size:18px;">"</span>##CommentBody##<span style="font-size:18px;">"</span>
+                    </p>
+                    <p>
+                        Click <a href="##CommentUrl##">here</a> to view and reply.
+                    </p>
+                    <p style="border-top:1px dotted lightgrey;"></p>
+
+                    <p style="font-size:11px; color: lightgrey; padding-top:0px; margin:top:0px;">
+                        To unsubscribe from notifications click <a href="##UnsubscribeUrl##" style="color: lightgrey; text-decoration:underline">here</a>
+                    </p>
+                    <p style="color:lightgrey; font-size:10px; float:right;">Powered by uBlogsy and Umbraco</p>
+
+                </body>
+            </html>
+        </HtmlBody>
+    </EmailTemplate>
+
+
+</EmailTempaltes>

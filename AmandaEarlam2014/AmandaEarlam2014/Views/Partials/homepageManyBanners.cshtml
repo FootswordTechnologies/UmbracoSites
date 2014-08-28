@@ -1,0 +1,56 @@
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@{
+    var mediaFolderId = (int)CurrentPage.BannersMediaFolder;
+}
+ 
+@if (mediaFolderId > 0)
+{
+    var mediaFolder = Umbraco.TypedMedia(mediaFolderId);
+    var banners = mediaFolder.Children(x => x.DocumentTypeAlias == "Banner").ToList();
+ 
+    <div id="banner-wrapper">
+        <div id="banners">
+            @foreach (var banner in banners)
+            {
+                var link = Umbraco.TypedContent(banner.GetPropertyValue<int>("link"));
+                
+                <div class="banner">
+                    @if (link != null)
+                    {
+                        <a href="@link.Url">
+                            <img src="@(banner.GetPropertyValue<string>("image"))"/>
+                        </a>
+                    } 
+                    else
+                    {
+                        <img src="@(banner.GetPropertyValue<string>("image"))"  />
+                    }
+                    
+                    <div class="banner-text">
+                        <h2>@(banner.GetPropertyValue<string>("headline"))</h2>
+                        @Html.Raw(banner.GetPropertyValue("bannertext"))
+                            <cite>@(banner.GetPropertyValue<string>("author"))</cite>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="progress-bar"></div>
+    <script type="text/javascript" src="/scripts/jquery.carouFredSel-6.2.1.js"></script>
+    
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#banners').carouFredSel({
+                scroll: {
+                    items: 1,
+                    duration: 1000
+                },
+                auto: {
+                    progress: ".progress-bar"
+                }
+                
+            });
+        });
+    </script>
+}
