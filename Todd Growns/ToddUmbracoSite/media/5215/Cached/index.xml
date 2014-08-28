@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<imageIndex>
+  <image>
+    <originalFileName>Roof2.jpg</originalFileName>
+    <size>86859</size>
+    <dateLastModified>Mon, 10 Sep 2012 17:56:10 GMT</dateLastModified>
+    <width>700</width>
+    <height>500</height>
+    <cachedImage>
+      <fileName>ieyiqe1v.jpeg</fileName>
+      <dateCreated>Wed, 12 Sep 2012 11:52:57 GMT</dateCreated>
+      <dateLastAccessed>Wed, 12 Sep 2012 11:52:57 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <rotate>0</rotate>
+      <flip />
+      <colorMode />
+      <crop />
+      <width>560</width>
+      <height>400</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+    <cachedImage>
+      <fileName>j5yqcib2.jpeg</fileName>
+      <dateCreated>Wed, 12 Sep 2012 11:53:09 GMT</dateCreated>
+      <dateLastAccessed>Wed, 12 Sep 2012 11:53:09 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <rotate>0</rotate>
+      <flip />
+      <colorMode />
+      <crop />
+      <width>280</width>
+      <height>200</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+  </image>
+</imageIndex>

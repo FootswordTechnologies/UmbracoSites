@@ -1,0 +1,26 @@
+﻿@{
+  var groups = Model.singleServices.GroupBy("serviceType");  
+  foreach(var group in groups)
+  {
+      <section>
+        <h1>@umbraco.library.GetPreValueAsString(Convert.ToInt32(group.Key))</h1> 
+        <ul>                           
+            @foreach (var el in group.Elements)
+            {
+                <li>
+                    <h2>@el.Name<span>R</span></h2>
+                    @if (!string.IsNullOrEmpty(@el.ExampleImage))
+                    {
+                    <img src="@el.ExampleImage" alt="@el.Name"/>
+                    }
+                    else
+                    {
+                        <h3 class="noImage">Image on its way!</h3>
+                    }
+                </li>                              
+            }
+        </ul>
+      </section>                            
+  }
+}
+  

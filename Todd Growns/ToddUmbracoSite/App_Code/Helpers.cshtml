@@ -1,0 +1,22 @@
+﻿@helper GeneratePaging(int currentPage, int totalPages)
+{
+    if (totalPages > 1)
+    {
+        <ul class="pager">
+        @for (var p = 1; p < totalPages + 1; p++)
+        {
+            if(p == currentPage){
+                <li class="selected">
+                    <a href="?page=@p">Page @p</a>
+                </li>
+             }
+             else{
+                 <li>
+                    <a href="?page=@p">Page @p</a>
+                 </li> 
+            }
+        }
+        </ul>
+    }
+}
+

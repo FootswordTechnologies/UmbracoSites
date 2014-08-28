@@ -1,0 +1,67 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/masterpages/ToddGrowns.master" AutoEventWireup="true" %>
+<asp:Content ContentPlaceHolderId="head" runat="server">
+  <!-- Insert "head" markup here -->
+</asp:Content>
+  
+<asp:Content ContentPlaceHolderId="mainContentPlaceholder" runat="server">
+  <section id="profile">
+    <umbraco:Macro Alias="TgProfile" runat="server"></umbraco:Macro>
+  </section>
+    <section>
+        <div class="column">
+        <h1>Will Travel</h1>      
+<p>Generally up to <umbraco:Item field="workRadius" runat="server" /> miles from <umbraco:Item field="locationName" runat="server" />. </p> 
+    <div id="map_canvas"></div>
+        
+        </div>
+    <div id="acknowledgements">
+        <h2>Acknowledgements</h2>
+        <p>Thanks to <a href="http://www.acclaimimages.com/" target="_blank">Acclaim Images</a>  for the lovely woodwork tool icons.</p>
+    </div>
+    </section>
+<img src="../resources/icons/saw.jpg" alt="saw" id="saw"/>
+</asp:Content>
+
+<asp:Content ContentPlaceHolderId="pageScripting" runat="server">
+   <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBf_LFMM2RLHrivr6q8NdfWlBcyGRIZ9DY&sensor=false">
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#mainContent").addClass("about");
+            mapSetup();
+        });
+        $(mapSetup);
+
+        function mapSetup() {
+          var miles = <umbraco:Item field="workRadius" runat="server" />;
+            var metres = 1609.344 * miles;
+            var myLatLng = new google.maps.LatLng(<umbraco:Item field="locationLatitude" runat="server" />, <umbraco:Item field="locationLongitude" runat="server" />);
+            var mapOptions = {
+                center: myLatLng,
+                zoom:8,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("map_canvas"),
+                mapOptions);
+            var circleOptions = {
+                strokeColor: "FF0000",
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: 0,
+                fillOpacity:0.0,
+                map: map,
+                center: map.center,
+                radius: metres
+            };
+            var elyCircle = new google.maps.Circle(circleOptions);
+            var image = '../resources/icons/TGmarker.png';
+            var marker = new google.maps.Marker({
+                position:myLatLng,
+                map:map,
+                title:"Todd Growns Carpentry",
+                icon:image
+            });
+        }
+    </script>
+</asp:Content>

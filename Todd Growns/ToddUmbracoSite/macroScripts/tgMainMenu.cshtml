@@ -1,0 +1,32 @@
+﻿<nav id="mainNav">
+    <ul>
+        @{ var homeNode = Model.AncestorOrSelf("Home"); }
+        <li><a href="@homeNode.Url" class="@Library.If(homeNode.Id == Model.Id, "selected", "")">@homeNode.Name</a></li>
+
+        @{
+            foreach(var page in homeNode.Children)
+            {
+                var footer = page.footerLink;
+                if (!footer)
+                {
+                    var title = string.IsNullOrEmpty(page.pageTitle) ? page.Name : page.pageTitle;
+
+                    <li>
+                        <a href="@library.NiceUrl(page.Id)" 
+                           class="@Library.If(page.Id == Model.Id, "selected", "")">@title</a>
+                    </li>
+                }
+            }
+        }
+    </ul>
+
+    <!-- AddThis Button BEGIN -->
+    <div class="addthis_toolbox addthis_default_style "id="addit"
+         addthis:url="http://www.toddgrownscarpentry.co.uk"
+         addthis:title="Todd Growns Carpentry">
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        <a class="addthis_button_tweet"></a>
+        <a class="addthis_counter addthis_pill_style"></a>
+    </div>  
+    <!-- AddThis Button END -->
+</nav>

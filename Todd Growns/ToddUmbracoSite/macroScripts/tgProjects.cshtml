@@ -1,0 +1,45 @@
+﻿@{
+    const int DEFAULT_PAGE_SIZE = 3;
+    int page;
+    int modelSize;
+    var isint = Int32.TryParse(Model.pageSize.ToString(), out modelSize) ;
+    if (!isint)
+    {
+        modelSize = DEFAULT_PAGE_SIZE;
+    }
+    int pageSize = modelSize > 0 ? modelSize : DEFAULT_PAGE_SIZE;
+    if(!int.TryParse(Request.QueryString["page"], out page)){
+        page = 1;
+    }
+    var items =  Model.singleProjects.OrderBy("dateOfProject desc"); 
+    int totalItems = items.Count();
+    int totalPages = (int)Math.Ceiling((double)totalItems/(double)pageSize);
+    
+    if(page > totalPages){
+        page = totalPages;
+    }
+    else if (page < 1){
+        page = 1;
+    }
+}
+@Helpers.GeneratePaging(page, totalPages)
+<ul>
+    @foreach(var item in items.Paged(page, pageSize))
+    {
+        <li><a href="@item.Url"><img src="/ImageGen.ashx?image=@item.mainProjectImage" alt='@item.Name' title="@item.Name"/></a>
+            <article>
+                <h2>
+                    <a href="@item.Url">@item.Name</a>
+                </h2>
+                <p>@item.projectDescription</p>
+                <h3>@item.dateOfProject.ToString("MMMM, yyyy")</h3>
+                @if(!string.IsNullOrEmpty(@item.projectTown))
+                {
+                    <h3>@item.projectTown</h3>
+                }
+                <p><strong><a href="@item.Url">More ... </a></strong></p>
+            </article>
+        </li>
+    }
+</ul>
+@Helpers.GeneratePaging(page, totalPages)

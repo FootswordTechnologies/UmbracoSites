@@ -1,0 +1,1135 @@
+Index: 51Degrees.mobi.config
+===================================================================
+--- 51Degrees.mobi.config	(revision 0)
++++ 51Degrees.mobi.config	(working copy)
+@@ -0,0 +1,96 @@
++<?xml version="1.0"?>
++<configuration>
++  <!-- Necessary to get the sections below read properly.-->
++  <configSections>
++    <sectionGroup name="fiftyOne">
++      <section name="log" type="FiftyOne.Foundation.Mobile.Configuration.LogSection, FiftyOne.Foundation" requirePermission="false" allowDefinition="Everywhere" restartOnExternalChanges="false" allowExeDefinition="MachineToApplication"/>
++      <section name="redirect" type="FiftyOne.Foundation.Mobile.Configuration.RedirectSection, FiftyOne.Foundation" requirePermission="false" allowDefinition="Everywhere" restartOnExternalChanges="false" allowExeDefinition="MachineToApplication"/>
++      <section name="detection" type="FiftyOne.Foundation.Mobile.Detection.Configuration.DetectionSection, FiftyOne.Foundation" requirePermission="false" allowDefinition="Everywhere" restartOnExternalChanges="false" allowExeDefinition="MachineToApplication"/>
++    </sectionGroup>
++    <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
++      <section name="Detector.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
++    </sectionGroup>
++  </configSections>
++  <fiftyOne>
++    
++    <!--<redirect> element controls how requests from mobile devices are handled.
++    mobileHomePageUrl   Previously mobileRedirectUrl under the mobile/toolkit element.
++                        A url to direct mobile devices to instead of the normal web sites 
++                        landing page. (Optional)
++    firstRequestOnly    If set to true only the first request received by the web site is
++                        redirected to the mobileUrl when the site is accessed from a mobile
++                        device. (Optional – defaults to true)
++    timeout             The number of minutes of inactivity that should occur before the 
++                        requesting device should be treated as making a new request to the
++                        web site for the purposes of redirection. If the session is available
++                        the session timeout will be used and override this value. (Optional
++                        -defaults to 20 minutes)
++    devicesFile	        A file used to store the details of devices that have previously
++                        accessed the web site to determine if they're making a subsequent
++                        request. Needed to ensure multiple worker processes have a consistent
++                        view of previous activity. (Optional – random behaviour will be 
++                        experienced if not specified on web sites with more than one worker
++                        processes)
++    mobilePagesRegex    A regular expression that when applied to the current request Path
++                        (context.Request.AppRelativeCurrentExecutionFilePath) or the requesting 
++                        Urlwill return true if it should be considered a mobile page. Use 
++                        this attribute to tell redirection about mobile pages derived from base
++                        classes such as System.Web.UI.Page. Redirection needs to be aware of
++                        mobile pages so that requests to these pages can be ignored. Any page
++                        that derives from System.Web.UI.MobileControls.MobilePage will 
++                        automatically be treated as a mobile page irrespective of this 
++                        attribute. (Optional)
++    originalUrlAsQueryString
++                        If set to true the redirected URL will have the original requesting Url 
++                        encoded and included as the origUrl query string parameter in the 
++                        redirected Url. This will enable the mobile home page to determine the 
++                        original requested resource providing the option to display a mobile
++                        friendly version. (Optional – defaults to false)
++    locations/location  Provides details of different locations requests can be directed to based
++                        on the values of defined properties associated with the device or request.
++                        (Optional)
++      url               the URL of the redirect location to use if all the properties in the 
++                        collection match. (Mandatory)
++      matchExpression   can be used to provide a regular expression which will take the requesting
++                        URL as input match segments to be used in place of numeric parameters contained
++                        within {} in the url attribute. (Optional)                       
++                        The location element contains a collection of criteria that all need to match 
++                        for the location to be used. Two attributes must be specified with each entry.
++      property          the property of HttpRequest, HttpRequest.Browser or WURFL capability to 
++                        use when evaluating the matchExpression attribute. (Mandatory)
++      matchExpression   a regular expression used to evaluate the value of the property. (Mandatory)                        
++                        -->
++    <redirect firstRequestOnly="false"
++              mobileHomePageUrl="~/mobile/default.aspx"
++              timeout="20"
++              devicesFile="~/App_Data/Devices.dat"
++              mobilePagesRegex="mobile">
++    </redirect>
++    
++    <!--<log> element controls where and how much information should be recorded in the log.    
++    logFile   The location of the log file. (Mandatory)
++    logLevel  Values include Debug|Info|Warn|Fatal and control the level of information
++              logged. Defauls to Fatal if not specified. (Optional)-->
++    <log logFile="~/App_Data/Log.txt" logLevel="Info"/>
++
++    <!--<detection> element controls where the data files used are provided. If it is not present
++    the embedded device data will be used. This is the default behaviour.
++    If a Premium Data license key is present in a file with the extension .lic in the bin folder,
++    or provided in the FiftyOne.Foundation.Mobile.Detection.Constants.PremiumLicenceKey constant the
++    binaryFilePath attribute of the detection element must be provided and the worker process must have
++    modify access to the file to enable automatic updates to be downloaded.
++    
++    binaryFilePath  Path to the binary data file. (Optional - Lite / Mandatory - Premium)
++    shareUsage      Set to true to share usage information with 51Degrees.mobi. Read the Usage Data FAQ 
++                    to learn more. Defaults to True if not specified. (Optional)
++    xmlFiles/add    Provides one or more data files in XML form to use for detection.
++      name          The unique internal name of the XML file. (Mandatory)
++      filePath      Path to the xml format file. (Mandatory)
++      enabled       True or false to enable or disable processing the file. Default true. (Optional)
++    -->
++
++    <!-- IMPORTANT - Uncomment this line after you've purchased Premium Data. -->
++    <!--<detection binaryFilePath="~/App_Data/51Degrees.mobi-Premium.dat"/>-->
++
++  </fiftyOne>
++</configuration>
+\ No newline at end of file
+Index: App_Data/Log.txt
+===================================================================
+--- App_Data/Log.txt	(revision 0)
++++ App_Data/Log.txt	(working copy)
+@@ -0,0 +1,11 @@
++2012-09-25T13:08:50.7170105Z - 2040 - Info - Created provider from embedded device data 'FiftyOne.Foundation.Mobile.Detection.Binary.Resources.51Degrees.mobi-Lite.dat'.
++2012-09-25T13:22:29.7778581Z - 2040 - Info - Created provider from embedded device data 'FiftyOne.Foundation.Mobile.Detection.Binary.Resources.51Degrees.mobi-Lite.dat'.
++2012-09-25T13:25:43.1359175Z - 5020 - Info - Created provider from embedded device data 'FiftyOne.Foundation.Mobile.Detection.Binary.Resources.51Degrees.mobi-Lite.dat'.
++2012-09-26T10:02:54.4871935Z - 712 - Info - Created provider from embedded device data 'FiftyOne.Foundation.Mobile.Detection.Binary.Resources.51Degrees.mobi-Lite.dat'.
++2012-09-26T10:09:57.1753699Z - 5020 - Info - Created provider from embedded device data 'FiftyOne.Foundation.Mobile.Detection.Binary.Resources.51Degrees.mobi-Lite.dat'.
++2012-09-27T07:40:22.4372699Z - 2324 - Info - Created provider from embedded device data 'FiftyOne.Foundation.Mobile.Detection.Binary.Resources.51Degrees.mobi-Lite.dat'.
++2012-10-03T11:27:08.5302871Z - 2704 - Info - Created provider from embedded device data 'FiftyOne.Foundation.Mobile.Detection.Binary.Resources.51Degrees.mobi-Lite.dat'.
++2012-10-03T13:08:12.2021093Z - 2704 - Info - Created provider from embedded device data 'FiftyOne.Foundation.Mobile.Detection.Binary.Resources.51Degrees.mobi-Lite.dat'.
++2012-10-03T17:57:04.8103566Z - 2704 - Info - Created provider from embedded device data 'FiftyOne.Foundation.Mobile.Detection.Binary.Resources.51Degrees.mobi-Lite.dat'.
++2012-10-04T07:02:49.5652652Z - 4988 - Info - Created provider from embedded device data 'FiftyOne.Foundation.Mobile.Detection.Binary.Resources.51Degrees.mobi-Lite.dat'.
++2012-10-04T15:24:33.7366917Z - 2260 - Info - Created provider from embedded device data 'FiftyOne.Foundation.Mobile.Detection.Binary.Resources.51Degrees.mobi-Lite.dat'.
+Index: App_Data/umbraco.config
+===================================================================
+--- App_Data/umbraco.config	(revision 1250)
++++ App_Data/umbraco.config	(working copy)
+@@ -29,17 +29,17 @@
+ 
+ ]>
+ <root id="-1">
+-  <Home id="1321" parentID="-1" level="1" writerID="0" creatorID="0" nodeType="1052" template="1043" sortOrder="2" createDate="2012-08-20T13:27:35" updateDate="2012-09-21T15:21:35" nodeName="Home" urlName="home" writerName="FootswordAdmin" creatorName="FootswordAdmin" path="-1,1321" isDoc="">
++  <Home id="1321" parentID="-1" level="1" writerID="1" creatorID="0" nodeType="1052" template="1043" sortOrder="2" createDate="2012-08-20T13:27:35" updateDate="2012-10-02T19:05:24" nodeName="Home" urlName="home" writerName="ToddGrowns" creatorName="FootswordAdmin" path="-1,1321" isDoc="">
+     <siteName>Todd Growns Carpentry</siteName>
+     <ownerEmail>todd@toddgrownscarpentry.co.uk</ownerEmail>
+     <siteOwnerName>Todd Growns</siteOwnerName>
+     <homeHeader>Choose a dedicated craftsman</homeHeader>
+-    <homeSummary><![CDATA[With nearly %%experience%% years experience in the trade, I offer a professional approach every aspect of <strong><a href="/services">carpentry</a></strong> to the highest standards. Prices are competitive and I undertake all aspects of woodwork and other related projects.
++    <homeSummary><![CDATA[With %%experience%% years experience in the trade, I offer a professional approach every aspect of <strong><a href="/services">carpentry</a></strong> to the highest standards. Prices are competitive and I undertake all aspects of woodwork and other related projects.
+ 
+ Why not <strong><a href="/contact-todd">contact </a></strong>me for a quote?]]></homeSummary>
+     <siteOwnerPhone>07753 229223</siteOwnerPhone>
+     <dateStartedCareer>1993-01-01T00:00:00</dateStartedCareer>
+-    <exampleHeader>Todd understands wood</exampleHeader>
++    <exampleHeader>Creative, conscientious, competitive</exampleHeader>
+     <examplePicture>/media/5622/AtWork.jpg</examplePicture>
+     <numberRandomServices>5</numberRandomServices>
+     <tgMetaDescription><![CDATA[Todd Growns Carpentry]]></tgMetaDescription>
+@@ -66,11 +66,20 @@
+       </umbracoNaviHide>
+       <footerLink>
+       </footerLink>
+-      <singleProject id="1468" parentID="1324" level="3" writerID="0" creatorID="0" nodeType="1223" template="1467" sortOrder="5" createDate="2012-09-07T16:50:57" updateDate="2012-09-12T12:29:27" nodeName="Listed Conservatory Restoration" urlName="listed-conservatory-restoration" writerName="FootswordAdmin" creatorName="FootswordAdmin" path="-1,1321,1324,1468" isDoc="">
++      <singleProject id="1468" parentID="1324" level="3" writerID="1" creatorID="0" nodeType="1223" template="1467" sortOrder="5" createDate="2012-09-07T16:50:57" updateDate="2012-10-02T18:58:59" nodeName="Conservatory Rebuild" urlName="conservatory-rebuild" writerName="ToddGrowns" creatorName="FootswordAdmin" path="-1,1321,1324,1468" isDoc="">
+         <projectDescription><![CDATA[
+-<p>Praesent augue elit, dignissim vitae fermentum ut, mattis vel
+-ipsum. Sed fermentum vulputate odio. Duis fringilla magna in erat
+-gravida vehicula imperdiet tortor dapibus.</p>
++<p>I was asked to quote on a repair of the existing conservatory at
++Stanley Street in Bedford. However, it was so dilapidated and
++rotten, that the only option was to rebuild.</p>
++
++<p>The client had two options: one was to replace like for like,
++the other was to replace with a modern UPVC conservatory. She
++decided that in order to keep the feel of the property, a wooden
++conservatory would be best.</p>
++
++<p>As you look through the pictures you can see that the
++conservatory was entirely hand-made, including the door and window
++casements.</p>
+ ]]></projectDescription>
+         <mainProjectImage>/media/5157/Conservatory2.png</mainProjectImage>
+         <dateOfProject>2012-07-12T00:00:00</dateOfProject>
+@@ -128,15 +137,14 @@
+           <footerLink>0</footerLink>
+         </projectImage>
+       </singleProject>
+-      <singleProject id="1469" parentID="1324" level="3" writerID="0" creatorID="0" nodeType="1223" template="1467" sortOrder="5" createDate="2012-09-07T17:01:54" updateDate="2012-09-12T12:51:48" nodeName="Wymondham Garage Roof" urlName="wymondham-garage-roof" writerName="FootswordAdmin" creatorName="FootswordAdmin" path="-1,1321,1324,1469" isDoc="">
++      <singleProject id="1469" parentID="1324" level="3" writerID="1" creatorID="0" nodeType="1223" template="1467" sortOrder="5" createDate="2012-09-07T17:01:54" updateDate="2012-10-02T19:09:47" nodeName="Wymondham Garage Roof" urlName="wymondham-garage-roof" writerName="ToddGrowns" creatorName="FootswordAdmin" path="-1,1321,1324,1469" isDoc="">
+         <projectDescription><![CDATA[
+-<p>Praesent augue elit, dignissim vitae fermentum ut, mattis vel
+-ipsum. Sed fermentum vulputate odio. Duis fringilla magna in erat
+-gravida vehicula imperdiet tortor dapibus.</p>
++<p>Trussed roof on a new garage. Included fascias, soffits and
++bargeboards.</p>
+ ]]></projectDescription>
+         <mainProjectImage>/media/5243/Roof1.jpg</mainProjectImage>
+         <dateOfProject>2012-02-08T00:00:00</dateOfProject>
+-        <projectTown>Wymondham</projectTown>
++        <projectTown>Wymondham, Norfolk</projectTown>
+         <tgMetaDescription><![CDATA[]]></tgMetaDescription>
+         <tgMetaKeywords><![CDATA[]]></tgMetaKeywords>
+         <umbracoURLName>
+@@ -191,13 +199,15 @@
+           <footerLink>0</footerLink>
+         </projectImage>
+       </singleProject>
+-      <singleProject id="1470" parentID="1324" level="3" writerID="0" creatorID="0" nodeType="1223" template="1467" sortOrder="5" createDate="2012-09-07T17:04:58" updateDate="2012-09-10T19:11:38" nodeName="Dining Room Floor" urlName="dining-room-floor" writerName="FootswordAdmin" creatorName="FootswordAdmin" path="-1,1321,1324,1470" isDoc="">
++      <singleProject id="1470" parentID="1324" level="3" writerID="1" creatorID="0" nodeType="1223" template="1467" sortOrder="5" createDate="2012-09-07T17:04:58" updateDate="2012-10-02T19:06:51" nodeName="Dining Room Floor" urlName="dining-room-floor" writerName="ToddGrowns" creatorName="FootswordAdmin" path="-1,1321,1324,1470" isDoc="">
+         <projectDescription><![CDATA[
+ <p>Small-scale project to fit a dining room with a warm-coloured
+ wooden floor, including the skirting boards.</p>
+ ]]></projectDescription>
+         <mainProjectImage>/media/5310/DiningRoom1.jpg</mainProjectImage>
+-        <dateOfProject>2012-06-05T00:00:00</dateOfProject>
++        <dateOfProject>2011-09-15T00:00:00</dateOfProject>
++        <projectTown>
++        </projectTown>
+         <tgMetaDescription><![CDATA[]]></tgMetaDescription>
+         <tgMetaKeywords><![CDATA[]]></tgMetaKeywords>
+         <umbracoURLName>
+@@ -237,12 +247,13 @@
+           <footerLink>0</footerLink>
+         </projectImage>
+       </singleProject>
+-      <singleProject id="1471" parentID="1324" level="3" writerID="0" creatorID="0" nodeType="1223" template="1467" sortOrder="5" createDate="2012-09-07T17:07:24" updateDate="2012-09-10T18:52:35" nodeName="French Doors" urlName="french-doors" writerName="FootswordAdmin" creatorName="FootswordAdmin" path="-1,1321,1324,1471" isDoc="">
++      <singleProject id="1471" parentID="1324" level="3" writerID="1" creatorID="0" nodeType="1223" template="1467" sortOrder="5" createDate="2012-09-07T17:07:24" updateDate="2012-10-02T19:12:15" nodeName="French Doors" urlName="french-doors" writerName="ToddGrowns" creatorName="FootswordAdmin" path="-1,1321,1324,1471" isDoc="">
+         <projectDescription><![CDATA[
+-<p>Description needed</p>
++<p>Fitted a set of oak French doors on a barn conversion.</p>
+ ]]></projectDescription>
+         <mainProjectImage>/media/5377/FrenchDoors1.jpg</mainProjectImage>
+-        <dateOfProject>2011-10-11T00:00:00</dateOfProject>
++        <dateOfProject>2012-05-17T00:00:00</dateOfProject>
++        <projectTown>Suffolk</projectTown>
+         <tgMetaDescription><![CDATA[]]></tgMetaDescription>
+         <tgMetaKeywords><![CDATA[]]></tgMetaKeywords>
+         <umbracoURLName>
+@@ -296,6 +307,127 @@
+           <footerLink>0</footerLink>
+         </projectImage>
+       </singleProject>
++      <singleProject id="1483" parentID="1324" level="3" writerID="0" creatorID="0" nodeType="1223" template="1467" sortOrder="5" createDate="2012-10-04T15:11:32" updateDate="2012-10-04T15:30:28" nodeName="Laminate Floor" urlName="laminate-floor" writerName="FootswordAdmin" creatorName="FootswordAdmin" path="-1,1321,1324,1483" isDoc="">
++        <projectDescription><![CDATA[]]></projectDescription>
++        <mainProjectImage>/media/6411/Laminate 8.jpg</mainProjectImage>
++        <dateOfProject>2012-09-22T00:00:00</dateOfProject>
++        <projectTown>Littleport</projectTown>
++        <tgMetaDescription><![CDATA[]]></tgMetaDescription>
++        <tgMetaKeywords><![CDATA[]]></tgMetaKeywords>
++        <umbracoURLName>
++        </umbracoURLName>
++        <umbracoURLAlias>
++        </umbracoURLAlias>
++        <umbracoRedirect>
++        </umbracoRedirect>
++        <umbracoNaviHide>0</umbracoNaviHide>
++        <footerLink>0</footerLink>
++        <projectImage id="1484" parentID="1483" level="4" writerID="0" creatorID="0" nodeType="1225" template="0" sortOrder="1" createDate="2012-10-04T15:31:17" updateDate="2012-10-04T15:31:32" nodeName="Laminate 1" urlName="laminate-1" writerName="FootswordAdmin" creatorName="FootswordAdmin" path="-1,1321,1324,1483,1484" isDoc="">
++          <storyImage>/media/6432/Laminate 1.jpg</storyImage>
++          <description>
++          </description>
++          <tgMetaDescription><![CDATA[]]></tgMetaDescription>
++          <tgMetaKeywords><![CDATA[]]></tgMetaKeywords>
++          <umbracoURLName>
++          </umbracoURLName>
++          <umbracoURLAlias>
++          </umbracoURLAlias>
++          <umbracoRedirect>
++          </umbracoRedirect>
++          <umbracoNaviHide>0</umbracoNaviHide>
++          <footerLink>0</footerLink>
++        </projectImage>
++        <projectImage id="1485" parentID="1483" level="4" writerID="0" creatorID="0" nodeType="1225" template="0" sortOrder="2" createDate="2012-10-04T15:31:41" updateDate="2012-10-04T15:31:56" nodeName="Laminate 2" urlName="laminate-2" writerName="FootswordAdmin" creatorName="FootswordAdmin" path="-1,1321,1324,1483,1485" isDoc="">
++          <storyImage>/media/6450/Laminate 2.jpg</storyImage>
++          <description>
++          </description>
++          <tgMetaDescription><![CDATA[]]></tgMetaDescription>
++          <tgMetaKeywords><![CDATA[]]></tgMetaKeywords>
++          <umbracoURLName>
++          </umbracoURLName>
++          <umbracoURLAlias>
++          </umbracoURLAlias>
++          <umbracoRedirect>
++          </umbracoRedirect>
++          <umbracoNaviHide>0</umbracoNaviHide>
++          <footerLink>0</footerLink>
++        </projectImage>
++        <projectImage id="1486" parentID="1483" level="4" writerID="0" creatorID="0" nodeType="1225" template="0" sortOrder="3" createDate="2012-10-04T15:32:04" updateDate="2012-10-04T15:32:14" nodeName="Laminate 3" urlName="laminate-3" writerName="FootswordAdmin" creatorName="FootswordAdmin" path="-1,1321,1324,1483,1486" isDoc="">
++          <storyImage>/media/6468/Laminate 3.jpg</storyImage>
++          <description>
++          </description>
++          <tgMetaDescription><![CDATA[]]></tgMetaDescription>
++          <tgMetaKeywords><![CDATA[]]></tgMetaKeywords>
++          <umbracoURLName>
++          </umbracoURLName>
++          <umbracoURLAlias>
++          </umbracoURLAlias>
++          <umbracoRedirect>
++          </umbracoRedirect>
++          <umbracoNaviHide>0</umbracoNaviHide>
++          <footerLink>0</footerLink>
++        </projectImage>
++        <projectImage id="1487" parentID="1483" level="4" writerID="0" creatorID="0" nodeType="1225" template="0" sortOrder="4" createDate="2012-10-04T15:32:23" updateDate="2012-10-04T15:32:37" nodeName="Laminate 4" urlName="laminate-4" writerName="FootswordAdmin" creatorName="FootswordAdmin" path="-1,1321,1324,1483,1487" isDoc="">
++          <storyImage>/media/6486/Laminate 4.jpg</storyImage>
++          <description>
++          </description>
++          <tgMetaDescription><![CDATA[]]></tgMetaDescription>
++          <tgMetaKeywords><![CDATA[]]></tgMetaKeywords>
++          <umbracoURLName>
++          </umbracoURLName>
++          <umbracoURLAlias>
++          </umbracoURLAlias>
++          <umbracoRedirect>
++          </umbracoRedirect>
++          <umbracoNaviHide>0</umbracoNaviHide>
++          <footerLink>0</footerLink>
++        </projectImage>
++        <projectImage id="1488" parentID="1483" level="4" writerID="0" creatorID="0" nodeType="1225" template="0" sortOrder="5" createDate="2012-10-04T15:32:49" updateDate="2012-10-04T15:32:58" nodeName="Laminate 5" urlName="laminate-5" writerName="FootswordAdmin" creatorName="FootswordAdmin" path="-1,1321,1324,1483,1488" isDoc="">
++          <storyImage>/media/6504/Laminate 5.jpg</storyImage>
++          <description>
++          </description>
++          <tgMetaDescription><![CDATA[]]></tgMetaDescription>
++          <tgMetaKeywords><![CDATA[]]></tgMetaKeywords>
++          <umbracoURLName>
++          </umbracoURLName>
++          <umbracoURLAlias>
++          </umbracoURLAlias>
++          <umbracoRedirect>
++          </umbracoRedirect>
++          <umbracoNaviHide>0</umbracoNaviHide>
++          <footerLink>0</footerLink>
++        </projectImage>
++        <projectImage id="1489" parentID="1483" level="4" writerID="0" creatorID="0" nodeType="1225" template="0" sortOrder="6" createDate="2012-10-04T15:33:08" updateDate="2012-10-04T15:33:20" nodeName="Laminate 6" urlName="laminate-6" writerName="FootswordAdmin" creatorName="FootswordAdmin" path="-1,1321,1324,1483,1489" isDoc="">
++          <storyImage>/media/6522/Laminate 6.jpg</storyImage>
++          <description>
++          </description>
++          <tgMetaDescription><![CDATA[]]></tgMetaDescription>
++          <tgMetaKeywords><![CDATA[]]></tgMetaKeywords>
++          <umbracoURLName>
++          </umbracoURLName>
++          <umbracoURLAlias>
++          </umbracoURLAlias>
++          <umbracoRedirect>
++          </umbracoRedirect>
++          <umbracoNaviHide>0</umbracoNaviHide>
++          <footerLink>0</footerLink>
++        </projectImage>
++        <projectImage id="1490" parentID="1483" level="4" writerID="0" creatorID="0" nodeType="1225" template="0" sortOrder="7" createDate="2012-10-04T15:33:32" updateDate="2012-10-04T15:33:43" nodeName="Laminate 7" urlName="laminate-7" writerName="FootswordAdmin" creatorName="FootswordAdmin" path="-1,1321,1324,1483,1490" isDoc="">
++          <storyImage>/media/6540/Laminate 7.jpg</storyImage>
++          <description>
++          </description>
++          <tgMetaDescription><![CDATA[]]></tgMetaDescription>
++          <tgMetaKeywords><![CDATA[]]></tgMetaKeywords>
++          <umbracoURLName>
++          </umbracoURLName>
++          <umbracoURLAlias>
++          </umbracoURLAlias>
++          <umbracoRedirect>
++          </umbracoRedirect>
++          <umbracoNaviHide>0</umbracoNaviHide>
++          <footerLink>0</footerLink>
++        </projectImage>
++      </singleProject>
+     </Projects>
+     <Services id="1325" parentID="1321" level="2" writerID="0" creatorID="0" nodeType="1198" template="1047" sortOrder="1" createDate="2012-08-20T14:25:25" updateDate="2012-09-03T07:02:18" nodeName="Services" urlName="services" writerName="FootswordAdmin" creatorName="FootswordAdmin" path="-1,1321,1325" isDoc="">
+       <tgMetaDescription><![CDATA[]]></tgMetaDescription>
+@@ -553,9 +685,10 @@
+       </umbracoNaviHide>
+       <footerLink>
+       </footerLink>
+-      <singleTestimonial id="1332" parentID="1329" level="3" writerID="0" creatorID="0" nodeType="1327" template="0" sortOrder="1" createDate="2012-08-20T14:44:33" updateDate="2012-08-21T13:45:21" nodeName="Mr and Mrs Smith, Ely" urlName="mr-and-mrs-smith,-ely" writerName="admin" creatorName="admin" path="-1,1321,1329,1332" isDoc="">
+-        <recommendation><![CDATA[Sed sagittis malesuada nulla a vulputate. Phasellus tellus orci, elementum ac blandit et, varius id elit. Maecenas est risus, laoreet ut consectetur luctus, porttitor vel eros. In erat dui, viverra faucibus congue nec, blandit eget neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur urna nisl, tristique ac luctus vel, adipiscing non eros. Vestibulum vel eleifend enim.]]></recommendation>
+-        <dateWorkCompleted>2010-08-04T00:00:00</dateWorkCompleted>
++      <singleTestimonial id="1481" parentID="1329" level="3" writerID="0" creatorID="1" nodeType="1327" template="0" sortOrder="1" createDate="2012-10-02T19:24:08" updateDate="2012-10-04T15:34:13" nodeName="Catherine Hayden" urlName="catherine-hayden" writerName="FootswordAdmin" creatorName="ToddGrowns" path="-1,1321,1329,1481" isDoc="">
++        <recommendation><![CDATA[Very professional, reliable and would not hesitate to recommend you to friends or family. Will be calling for your services when I need further work done many thanks Catherine Hayden. Littleport.]]></recommendation>
++        <dateWorkCompleted>2012-09-22T00:00:00</dateWorkCompleted>
++        <linkedProject><![CDATA[1483]]></linkedProject>
+         <tgMetaDescription><![CDATA[]]></tgMetaDescription>
+         <tgMetaKeywords><![CDATA[]]></tgMetaKeywords>
+         <umbracoURLName>
+@@ -564,27 +697,11 @@
+         </umbracoURLAlias>
+         <umbracoRedirect>
+         </umbracoRedirect>
+-        <umbracoNaviHide>
+-        </umbracoNaviHide>
+-        <footerLink>
+-        </footerLink>
+-      </singleTestimonial>
+-      <singleTestimonial id="1435" parentID="1329" level="3" writerID="0" creatorID="0" nodeType="1327" template="0" sortOrder="2" createDate="2012-08-22T10:25:20" updateDate="2012-08-22T10:26:05" nodeName="Miss Jones, Chatteris" urlName="miss-jones,-chatteris" writerName="admin" creatorName="admin" path="-1,1321,1329,1435" isDoc="">
+-        <recommendation><![CDATA[There is only one thing deteriorating as fast as Britain's public finances – and that is the public faith in Osborne's ability to deal with the problem.]]></recommendation>
+-        <dateWorkCompleted>2012-06-03T00:00:00</dateWorkCompleted>
+-        <tgMetaDescription><![CDATA[]]></tgMetaDescription>
+-        <tgMetaKeywords><![CDATA[]]></tgMetaKeywords>
+-        <umbracoURLName>
+-        </umbracoURLName>
+-        <umbracoURLAlias>
+-        </umbracoURLAlias>
+-        <umbracoRedirect>
+-        </umbracoRedirect>
+         <umbracoNaviHide>0</umbracoNaviHide>
+         <footerLink>0</footerLink>
+       </singleTestimonial>
+     </Testimonials>
+-    <About id="1322" parentID="1321" level="2" writerID="0" creatorID="0" nodeType="1053" template="1045" sortOrder="3" createDate="2012-08-20T13:38:38" updateDate="2012-09-21T16:03:58" nodeName="About Todd" urlName="about-todd" writerName="FootswordAdmin" creatorName="FootswordAdmin" path="-1,1321,1322" isDoc="">
++    <About id="1322" parentID="1321" level="2" writerID="0" creatorID="0" nodeType="1053" template="1045" sortOrder="3" createDate="2012-08-20T13:38:38" updateDate="2012-09-21T15:50:55" nodeName="About Todd" urlName="about-todd" writerName="FootswordAdmin" creatorName="FootswordAdmin" path="-1,1321,1322" isDoc="">
+       <workRadius>30</workRadius>
+       <locationLatitude>52.397902</locationLatitude>
+       <locationLongitude>0.263936</locationLongitude>
+@@ -612,14 +729,17 @@
+       </umbracoRedirect>
+       <umbracoNaviHide>0</umbracoNaviHide>
+       <footerLink>1</footerLink>
+-      <singleQualification id="1475" parentID="1322" level="3" writerID="0" creatorID="0" nodeType="1474" template="0" sortOrder="1" createDate="2012-09-21T15:27:51" updateDate="2012-09-21T16:13:40" nodeName="CSCS" urlName="cscs" writerName="FootswordAdmin" creatorName="FootswordAdmin" path="-1,1321,1322,1475" isDoc="">
++      <singleQualification id="1475" parentID="1322" level="3" writerID="0" creatorID="0" nodeType="1474" template="0" sortOrder="1" createDate="2012-09-21T15:27:51" updateDate="2012-09-21T16:12:46" nodeName="CSCS" urlName="cscs" writerName="FootswordAdmin" creatorName="FootswordAdmin" path="-1,1321,1322,1475" isDoc="">
+         <description>Approved cardholder</description>
+         <fullName>Construction Skills Certification Scheme</fullName>
+         <tgMetaDescription><![CDATA[]]></tgMetaDescription>
+         <tgMetaKeywords><![CDATA[]]></tgMetaKeywords>
+-        <umbracoURLName />
+-        <umbracoURLAlias />
+-        <umbracoRedirect />
++        <umbracoURLName>
++        </umbracoURLName>
++        <umbracoURLAlias>
++        </umbracoURLAlias>
++        <umbracoRedirect>
++        </umbracoRedirect>
+         <umbracoNaviHide>0</umbracoNaviHide>
+         <footerLink>0</footerLink>
+       </singleQualification>
+Index: Bin/FiftyOne.Foundation.dll
+===================================================================
+Cannot display: file marked as a binary type.
+svn:mime-type = application/octet-stream
+Index: Bin/FiftyOne.Foundation.dll
+===================================================================
+--- Bin/FiftyOne.Foundation.dll	(revision 0)
++++ Bin/FiftyOne.Foundation.dll	(working copy)
+
+Property changes on: Bin/FiftyOne.Foundation.dll
+___________________________________________________________________
+Added: svn:mime-type
+## -0,0 +1 ##
++application/octet-stream
+\ No newline at end of property
+Index: Bin/FiftyOne.Foundation.dll.refresh
+===================================================================
+Cannot display: file marked as a binary type.
+svn:mime-type = application/octet-stream
+Index: Bin/FiftyOne.Foundation.dll.refresh
+===================================================================
+--- Bin/FiftyOne.Foundation.dll.refresh	(revision 0)
++++ Bin/FiftyOne.Foundation.dll.refresh	(working copy)
+
+Property changes on: Bin/FiftyOne.Foundation.dll.refresh
+___________________________________________________________________
+Added: svn:mime-type
+## -0,0 +1 ##
++application/octet-stream
+\ No newline at end of property
+Index: Bin/Microsoft.Web.Infrastructure.dll.refresh
+===================================================================
+--- Bin/Microsoft.Web.Infrastructure.dll.refresh	(revision 0)
++++ Bin/Microsoft.Web.Infrastructure.dll.refresh	(working copy)
+@@ -0,0 +1 @@
++packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll
+\ No newline at end of file
+Index: macroScripts/tgMainMenu.cshtml
+===================================================================
+--- macroScripts/tgMainMenu.cshtml	(revision 1213)
++++ macroScripts/tgMainMenu.cshtml	(working copy)
+@@ -1,22 +1,37 @@
+-﻿<nav id="mainNav">
+-<ul>
+-    @{ var homeNode = Model.AncestorOrSelf("Home"); }
+-    <li><a href="@homeNode.Url" class="@Library.If(homeNode.Id == Model.Id, "selected", "")">@homeNode.Name</a></li>
++﻿@{
++    var isMobile = (Request.Browser.IsMobileDevice || Request.UserAgent.ToLower().Contains("mobi"));
++    var homeNode = Model.AncestorOrSelf("Home");
++}
++@{ if (!isMobile)
++   {
++       <nav id="mainNav">
++        <ul>
++            <li><a href="@homeNode.Url" class="@Library.If(homeNode.Id == Model.Id, "selected", "")">@homeNode.Name</a></li>
++            @{
++               foreach (var page in homeNode.Children)
++               {
++                   var footer = page.footerLink;
++                   if (!footer)
++                   {
++                       var title = string.IsNullOrEmpty(page.pageTitle) ? page.Name : page.pageTitle;
+ 
+-    @{
+-        foreach(var page in homeNode.Children)
+-        {
+-            var footer = page.footerLink;
+-            if (!footer)
+-            {
+-                var title = string.IsNullOrEmpty(page.pageTitle) ? page.Name : page.pageTitle;
+-
+-                <li>
+-                    <a href="@library.NiceUrl(page.Id)" 
+-                       class="@Library.If(page.Id == Model.Id, "selected", "")">@title</a>
+-                </li>
+-            }
+-        }
+-     }
+-</ul>
+-</nav>
+\ No newline at end of file
++                        <li>
++                            <a href="@library.NiceUrl(page.Id)" 
++                               class="@Library.If(page.Id == Model.Id, "selected", "")">@title</a>
++                        </li>
++                   }
++               }
++             }
++        </ul>
++    </nav>  
++   }
++   else
++   {
++       <h1>No Menu in Mobile</h1>
++       <nav id="mobileNav">
++           <ul>
++               
++           </ul>
++       </nav>
++   }
++}
+Index: masterpages/ToddGrowns.master
+===================================================================
+--- masterpages/ToddGrowns.master	(revision 1217)
++++ masterpages/ToddGrowns.master	(working copy)
+@@ -1,38 +1,38 @@
+-﻿<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/default.master" AutoEventWireup="true" %>
+-
+-<asp:Content ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
+-<!DOCTYPE html>
+-<html>
+-<head runat="server">
+-    <umbraco:Macro Alias="TgHeaderTags" runat="server"></umbraco:Macro>
+-          
+-    <link rel="stylesheet" type="text/css" href="/css/Reset.css"/>
+-    <!-- Less version of stylesheet-->
+-    <link href="/scripts/less/ToddGrowns.less" rel="stylesheet" type="text/css" />    
+-    <script src="/scripts/less-1.3.0.min.js" type="text/javascript"></script>
+-     
+-    <!-- All JavaScript at the bottom, except this Modernizr build.
+-       Modernizr enables HTML5 elements & feature detects for optimal performance.
+-       Create your own custom Modernizr build: www.modernizr.com/download/ -->
+-    <script  type="text/javascript" src="/scripts/modernizr-2.5.3.min.js"></script>
+-    <asp:ContentPlaceHolder ID="head" runat="server"/>
+-</head>
+-<body>
+-    <div id="content_wrapper">
+-      <umbraco:Macro Alias="TgMasthead" runat="server"></umbraco:Macro>
+-
+-        <umbraco:Macro Alias="TgMainMenu" runat="server"></umbraco:Macro>
+-        <div id="mainContent">
+-        <asp:ContentPlaceHolder ID="mainContentPlaceholder" runat="server">
+-        
+-        </asp:ContentPlaceHolder>
+-        </div>
+-      <umbraco:Macro Alias="tgFooter" runat="server"></umbraco:Macro>        
+-    </div>
+-    
+-    <!-- JavaScript at the bottom for fast page loading -->
+-    <script type="text/javascript" src="/scripts/jquery-1.7.1.min.js"></script>
+-    <asp:ContentPlaceHolder runat="server" ID="pageScripting"></asp:ContentPlaceHolder>
+-</body>
+-</html>
++﻿<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/default.master" AutoEventWireup="true" %>
++
++<asp:Content ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
++<!DOCTYPE html>
++<html>
++<head runat="server">
++    <umbraco:Macro Alias="TgHeaderTags" runat="server"></umbraco:Macro>
++          
++    <link rel="stylesheet" type="text/css" href="/css/Reset.css"/>
++    <!-- Less version of stylesheet-->
++    <link href="/scripts/less/ToddGrowns.less" rel="stylesheet" type="text/css" />    
++    <script src="/scripts/less-1.3.0.min.js" type="text/javascript"></script>
++     
++    <!-- All JavaScript at the bottom, except this Modernizr build.
++       Modernizr enables HTML5 elements & feature detects for optimal performance.
++       Create your own custom Modernizr build: www.modernizr.com/download/ -->
++    <script  type="text/javascript" src="/scripts/modernizr-2.5.3.min.js"></script>
++    <asp:ContentPlaceHolder ID="head" runat="server"/>
++</head>
++<body>
++    <div id="content_wrapper">
++      <umbraco:Macro Alias="TgMasthead" runat="server"></umbraco:Macro>
++
++        <umbraco:Macro Alias="TgMainMenu" runat="server"></umbraco:Macro>
++        <div id="mainContent">
++        <asp:ContentPlaceHolder ID="mainContentPlaceholder" runat="server">
++        
++        </asp:ContentPlaceHolder>
++        </div>
++      <umbraco:Macro Alias="tgFooter" runat="server"></umbraco:Macro>        
++    </div>
++    
++    <!-- JavaScript at the bottom for fast page loading -->
++    <script type="text/javascript" src="/scripts/jquery-1.7.1.min.js"></script>
++    <asp:ContentPlaceHolder runat="server" ID="pageScripting"></asp:ContentPlaceHolder>
++</body>
++</html>
+ </asp:Content>
+\ No newline at end of file
+Index: Mobile/Default.aspx
+===================================================================
+--- Mobile/Default.aspx	(revision 0)
++++ Mobile/Default.aspx	(working copy)
+@@ -0,0 +1,89 @@
++<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ASP.Mobile.Default" %>
++<%@ Import Namespace="System.Collections" %>
++
++<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
++
++<html xmlns="http://www.w3.org/1999/xhtml">
++<head runat="server">
++    <title>Welcome to the Mobile Home Page</title>
++</head>
++<body>
++    <form id="form1" runat="server">
++    <div>
++        <h1>Welcome to the Mobile Home Page</h1>
++        <% 
++            try
++            {
++                var version = System.Runtime.InteropServices.RuntimeEnvironment.GetSystemVersion();
++                if (version.StartsWith("v2"))
++                { %>
++            <p style="color: Red;"><b>
++            IMPORTANT: The NuGet version of 51Degrees.mobi requires .NET v4 or greater to run automatically.
++            Please change your project to run under .NET v4 then uninstall and reinstall the 51Degrees.mobi NuGet package. 
++            See the <a href="http://51degrees.mobi/Support/Documentation/Foundation/UserGuide.aspx">User Guide</a> for more information.
++            </b></p>    
++        <%  } }
++            catch { }
++        %>
++        <p>Here's some information about the requesting device:</p>
++        <ul>
++            <li>Screen Width: <% =Request.Browser.ScreenPixelsWidth %></li>
++            <li>Screen Height: <% =Request.Browser.ScreenPixelsHeight %></li>
++            <li>LayoutEngine: <% =Request.Browser["LayoutEngine"] %></li>
++            <li>AnimationTiming: <% =Request.Browser["AnimationTiming"] %></li>
++            <li>BlobBuilder: <% =Request.Browser["BlobBuilder"] %></li>
++            <li>CssBackground: <% =Request.Browser["CssBackground"] %></li>
++            <li>CssBorderImage: <% =Request.Browser["CssBorderImage"] %></li>
++            <li>CssCanvas: <% =Request.Browser["CssCanvas"] %></li>
++            <li>CssColor: <% =Request.Browser["CssColor"] %></li>
++            <li>CssColumn: <% =Request.Browser["CssColumn"] %></li>
++            <li>CssFlexbox: <% =Request.Browser["CssFlexbox"] %></li>
++            <li>CssFont: <% =Request.Browser["CssFont"] %></li>
++            <li>CssMediaQueries: <% =Request.Browser["CssMediaQueries"] %></li>
++            <li>CssMinMax: <% =Request.Browser["CssMinMax"] %></li>
++            <li>CssOverflow: <% =Request.Browser["CssOverflow"] %></li>
++            <li>CssPosition: <% =Request.Browser["CssPosition"] %></li>
++            <li>CssText: <% =Request.Browser["CssText"] %></li>
++            <li>CssTransforms: <% =Request.Browser["CssTransforms"] %></li>
++            <li>CssTransitions: <% =Request.Browser["CssTransitions"] %></li>
++            <li>CssUI: <% =Request.Browser["CssUI"] %></li>
++            <li>DataSet: <% =Request.Browser["DataSet"] %></li>
++            <li>DataUrl: <% =Request.Browser["DataUrl"] %></li>
++            <li>DeviceOrientation: <% =Request.Browser["DeviceOrientation"] %></li>
++            <li>FileReader: <% =Request.Browser["FileReader"] %></li>
++            <li>FileSaver: <% =Request.Browser["FileSaver"] %></li>
++            <li>FileWriter: <% =Request.Browser["FileWriter"] %></li>
++            <li>FormData: <% =Request.Browser["FormData"] %></li>
++            <li>Fullscreen: <% =Request.Browser["Fullscreen"] %></li>
++            <li>GeoLocation: <% =Request.Browser["GeoLocation"] %></li>
++            <li>History: <% =Request.Browser["History"] %></li>
++            <li>Html5: <% =Request.Browser["Html5"] %></li>
++            <li>Html-Media-Capture: <% =Request.Browser["Html-Media-Capture"] %></li>
++            <li>Iframe: <% =Request.Browser["Iframe"] %></li>
++            <li>IndexedDB: <% =Request.Browser["IndexedDB"] %></li>
++            <li>Json: <% =Request.Browser["Json"] %></li>
++            <li>Masking: <% =Request.Browser["Masking"] %></li>
++            <li>PostMessage: <% =Request.Browser["PostMessage"] %></li>
++            <li>PreferencesForFrames: <% =Request.Browser["PreferencesForFrames"] %></li>
++            <li>Progress: <% =Request.Browser["Progress"] %></li>
++            <li>Prompts: <% =Request.Browser["Prompts"] %></li>
++            <li>Selector: <% =Request.Browser["Selector"] %></li>
++            <li>Svg: <% =Request.Browser["Svg"] %></li>
++            <li>TouchEvents: <% =Request.Browser["TouchEvents"] %></li>
++            <li>Track: <% =Request.Browser["Track"] %></li>
++            <li>Video: <% =Request.Browser["Video"] %></li>
++            <li>Viewport: <% =Request.Browser["Viewport"] %></li>
++        </ul>
++        <p>See <a href="http://msdn.microsoft.com/en-us/library/system.web.httpbrowsercapabilities_properties.aspx" title="MSDN HttpBrowserCapabilities Documentation">MSDN</a> for details of Request.Browser properties.</p>
++        <p>See <a href="http://51degrees.codeplex.com/documentation" title="51Degrees.mobi Documentation">51Degrees.mobi</a> for user guide.</p>
++		<p>See <a href="http://51degrees.mobi/Products/DeviceData.aspx" title="51Degrees.mobi Device Data">51Degrees.mobi Device Data</a> for details of other data properties and to get weekly data updates.</p>
++        <hr />
++        <% if (Request.Browser.IsMobileDevice == false) { %>
++            <p>The requesting device isn't a mobile. The page must have been requested directly.</p>
++            <p>Try accessing the web site from a mobile device, or a mobile device emulator. A list of popular mobile emulators can be found <a href="http://51degrees.mobi/Support/FAQs/MobileEmulators.aspx" title="Mobile Emulators">here</a>.</p>
++        <% } %>
++        <p>Data Published: <% =FiftyOne.Foundation.Mobile.Detection.Factory.ActiveProvider.PublishedDate %></p>
++    </div>
++    </form>
++</body>
++</html>
+\ No newline at end of file
+Index: Mobile/Default.aspx.cs
+===================================================================
+--- Mobile/Default.aspx.cs	(revision 0)
++++ Mobile/Default.aspx.cs	(working copy)
+@@ -0,0 +1,29 @@
++/* *********************************************************************
++ * This Source Code Form is subject to the terms of the Mozilla Public
++ * License, v. 2.0.
++ * 
++ * If a copy of the MPL was not distributed with this file, You can obtain
++ * one at http://mozilla.org/MPL/2.0/.
++ * 
++ * This Source Code Form is “Incompatible With Secondary Licenses”, as
++ * defined by the Mozilla Public License, v. 2.0.
++ * ********************************************************************* */
++
++using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Web;
++using System.Web.UI;
++using System.Web.UI.WebControls;
++using System.Collections;
++
++namespace ASP.Mobile
++{
++    public partial class Default : System.Web.UI.Page
++    {
++        protected void Page_Load(object sender, EventArgs e)
++        {
++
++        }
++    }
++}
+\ No newline at end of file
+Index: Mobile/Default.aspx.designer.cs
+===================================================================
+--- Mobile/Default.aspx.designer.cs	(revision 0)
++++ Mobile/Default.aspx.designer.cs	(working copy)
+@@ -0,0 +1,26 @@
++//------------------------------------------------------------------------------
++// <auto-generated>
++//     This code was generated by a tool.
++//
++//     Changes to this file may cause incorrect behavior and will be lost if
++//     the code is regenerated.
++// </auto-generated>
++//------------------------------------------------------------------------------
++
++namespace ASP.Mobile
++{
++
++
++    public partial class Default
++    {
++
++        /// <summary>
++        /// form1 control.
++        /// </summary>
++        /// <remarks>
++        /// Auto-generated field.
++        /// To modify move field declaration from designer file to code-behind file.
++        /// </remarks>
++        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
++    }
++}
+Index: packages.config
+===================================================================
+--- packages.config	(revision 0)
++++ packages.config	(working copy)
+@@ -0,0 +1,5 @@
++﻿<?xml version="1.0" encoding="utf-8"?>
++<packages>
++  <package id="51Degrees.mobi" version="2.1.12.2" targetFramework="net40" />
++  <package id="Microsoft.Web.Infrastructure" version="1.0.0.0" targetFramework="net40" />
++</packages>
+\ No newline at end of file
+Index: packages/51Degrees.mobi.2.1.12.2/51Degrees.mobi.2.1.12.2.nupkg
+===================================================================
+Cannot display: file marked as a binary type.
+svn:mime-type = application/octet-stream
+Index: packages/51Degrees.mobi.2.1.12.2/51Degrees.mobi.2.1.12.2.nupkg
+===================================================================
+--- packages/51Degrees.mobi.2.1.12.2/51Degrees.mobi.2.1.12.2.nupkg	(revision 0)
++++ packages/51Degrees.mobi.2.1.12.2/51Degrees.mobi.2.1.12.2.nupkg	(working copy)
+
+Property changes on: packages/51Degrees.mobi.2.1.12.2/51Degrees.mobi.2.1.12.2.nupkg
+___________________________________________________________________
+Added: svn:mime-type
+## -0,0 +1 ##
++application/octet-stream
+\ No newline at end of property
+Index: packages/51Degrees.mobi.2.1.12.2/content/51Degrees.mobi.config
+===================================================================
+--- packages/51Degrees.mobi.2.1.12.2/content/51Degrees.mobi.config	(revision 0)
++++ packages/51Degrees.mobi.2.1.12.2/content/51Degrees.mobi.config	(working copy)
+@@ -0,0 +1,96 @@
++<?xml version="1.0"?>
++<configuration>
++  <!-- Necessary to get the sections below read properly.-->
++  <configSections>
++    <sectionGroup name="fiftyOne">
++      <section name="log" type="FiftyOne.Foundation.Mobile.Configuration.LogSection, FiftyOne.Foundation" requirePermission="false" allowDefinition="Everywhere" restartOnExternalChanges="false" allowExeDefinition="MachineToApplication"/>
++      <section name="redirect" type="FiftyOne.Foundation.Mobile.Configuration.RedirectSection, FiftyOne.Foundation" requirePermission="false" allowDefinition="Everywhere" restartOnExternalChanges="false" allowExeDefinition="MachineToApplication"/>
++      <section name="detection" type="FiftyOne.Foundation.Mobile.Detection.Configuration.DetectionSection, FiftyOne.Foundation" requirePermission="false" allowDefinition="Everywhere" restartOnExternalChanges="false" allowExeDefinition="MachineToApplication"/>
++    </sectionGroup>
++    <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
++      <section name="Detector.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
++    </sectionGroup>
++  </configSections>
++  <fiftyOne>
++    
++    <!--<redirect> element controls how requests from mobile devices are handled.
++    mobileHomePageUrl   Previously mobileRedirectUrl under the mobile/toolkit element.
++                        A url to direct mobile devices to instead of the normal web sites 
++                        landing page. (Optional)
++    firstRequestOnly    If set to true only the first request received by the web site is
++                        redirected to the mobileUrl when the site is accessed from a mobile
++                        device. (Optional – defaults to true)
++    timeout             The number of minutes of inactivity that should occur before the 
++                        requesting device should be treated as making a new request to the
++                        web site for the purposes of redirection. If the session is available
++                        the session timeout will be used and override this value. (Optional
++                        -defaults to 20 minutes)
++    devicesFile	        A file used to store the details of devices that have previously
++                        accessed the web site to determine if they're making a subsequent
++                        request. Needed to ensure multiple worker processes have a consistent
++                        view of previous activity. (Optional – random behaviour will be 
++                        experienced if not specified on web sites with more than one worker
++                        processes)
++    mobilePagesRegex    A regular expression that when applied to the current request Path
++                        (context.Request.AppRelativeCurrentExecutionFilePath) or the requesting 
++                        Urlwill return true if it should be considered a mobile page. Use 
++                        this attribute to tell redirection about mobile pages derived from base
++                        classes such as System.Web.UI.Page. Redirection needs to be aware of
++                        mobile pages so that requests to these pages can be ignored. Any page
++                        that derives from System.Web.UI.MobileControls.MobilePage will 
++                        automatically be treated as a mobile page irrespective of this 
++                        attribute. (Optional)
++    originalUrlAsQueryString
++                        If set to true the redirected URL will have the original requesting Url 
++                        encoded and included as the origUrl query string parameter in the 
++                        redirected Url. This will enable the mobile home page to determine the 
++                        original requested resource providing the option to display a mobile
++                        friendly version. (Optional – defaults to false)
++    locations/location  Provides details of different locations requests can be directed to based
++                        on the values of defined properties associated with the device or request.
++                        (Optional)
++      url               the URL of the redirect location to use if all the properties in the 
++                        collection match. (Mandatory)
++      matchExpression   can be used to provide a regular expression which will take the requesting
++                        URL as input match segments to be used in place of numeric parameters contained
++                        within {} in the url attribute. (Optional)                       
++                        The location element contains a collection of criteria that all need to match 
++                        for the location to be used. Two attributes must be specified with each entry.
++      property          the property of HttpRequest, HttpRequest.Browser or WURFL capability to 
++                        use when evaluating the matchExpression attribute. (Mandatory)
++      matchExpression   a regular expression used to evaluate the value of the property. (Mandatory)                        
++                        -->
++    <redirect firstRequestOnly="false"
++              mobileHomePageUrl="~/mobile/default.aspx"
++              timeout="20"
++              devicesFile="~/App_Data/Devices.dat"
++              mobilePagesRegex="mobile">
++    </redirect>
++    
++    <!--<log> element controls where and how much information should be recorded in the log.    
++    logFile   The location of the log file. (Mandatory)
++    logLevel  Values include Debug|Info|Warn|Fatal and control the level of information
++              logged. Defauls to Fatal if not specified. (Optional)-->
++    <log logFile="~/App_Data/Log.txt" logLevel="Info"/>
++
++    <!--<detection> element controls where the data files used are provided. If it is not present
++    the embedded device data will be used. This is the default behaviour.
++    If a Premium Data license key is present in a file with the extension .lic in the bin folder,
++    or provided in the FiftyOne.Foundation.Mobile.Detection.Constants.PremiumLicenceKey constant the
++    binaryFilePath attribute of the detection element must be provided and the worker process must have
++    modify access to the file to enable automatic updates to be downloaded.
++    
++    binaryFilePath  Path to the binary data file. (Optional - Lite / Mandatory - Premium)
++    shareUsage      Set to true to share usage information with 51Degrees.mobi. Read the Usage Data FAQ 
++                    to learn more. Defaults to True if not specified. (Optional)
++    xmlFiles/add    Provides one or more data files in XML form to use for detection.
++      name          The unique internal name of the XML file. (Mandatory)
++      filePath      Path to the xml format file. (Mandatory)
++      enabled       True or false to enable or disable processing the file. Default true. (Optional)
++    -->
++
++    <!-- IMPORTANT - Uncomment this line after you've purchased Premium Data. -->
++    <!--<detection binaryFilePath="~/App_Data/51Degrees.mobi-Premium.dat"/>-->
++
++  </fiftyOne>
++</configuration>
+\ No newline at end of file
+Index: packages/51Degrees.mobi.2.1.12.2/content/Mobile/Default.aspx.cs.pp
+===================================================================
+--- packages/51Degrees.mobi.2.1.12.2/content/Mobile/Default.aspx.cs.pp	(revision 0)
++++ packages/51Degrees.mobi.2.1.12.2/content/Mobile/Default.aspx.cs.pp	(working copy)
+@@ -0,0 +1,29 @@
++﻿/* *********************************************************************
++ * This Source Code Form is subject to the terms of the Mozilla Public
++ * License, v. 2.0.
++ * 
++ * If a copy of the MPL was not distributed with this file, You can obtain
++ * one at http://mozilla.org/MPL/2.0/.
++ * 
++ * This Source Code Form is “Incompatible With Secondary Licenses”, as
++ * defined by the Mozilla Public License, v. 2.0.
++ * ********************************************************************* */
++
++using System;
++using System.Collections.Generic;
++using System.Linq;
++using System.Web;
++using System.Web.UI;
++using System.Web.UI.WebControls;
++using System.Collections;
++
++namespace $rootnamespace$.Mobile
++{
++    public partial class Default : System.Web.UI.Page
++    {
++        protected void Page_Load(object sender, EventArgs e)
++        {
++
++        }
++    }
++}
+\ No newline at end of file
+Index: packages/51Degrees.mobi.2.1.12.2/content/Mobile/Default.aspx.designer.cs.pp
+===================================================================
+--- packages/51Degrees.mobi.2.1.12.2/content/Mobile/Default.aspx.designer.cs.pp	(revision 0)
++++ packages/51Degrees.mobi.2.1.12.2/content/Mobile/Default.aspx.designer.cs.pp	(working copy)
+@@ -0,0 +1,26 @@
++﻿//------------------------------------------------------------------------------
++// <auto-generated>
++//     This code was generated by a tool.
++//
++//     Changes to this file may cause incorrect behavior and will be lost if
++//     the code is regenerated.
++// </auto-generated>
++//------------------------------------------------------------------------------
++
++namespace $rootnamespace$.Mobile
++{
++
++
++    public partial class Default
++    {
++
++        /// <summary>
++        /// form1 control.
++        /// </summary>
++        /// <remarks>
++        /// Auto-generated field.
++        /// To modify move field declaration from designer file to code-behind file.
++        /// </remarks>
++        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
++    }
++}
+Index: packages/51Degrees.mobi.2.1.12.2/content/Mobile/Default.aspx.pp
+===================================================================
+--- packages/51Degrees.mobi.2.1.12.2/content/Mobile/Default.aspx.pp	(revision 0)
++++ packages/51Degrees.mobi.2.1.12.2/content/Mobile/Default.aspx.pp	(working copy)
+@@ -0,0 +1,89 @@
++﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="$rootnamespace$.Mobile.Default" %>
++<%@ Import Namespace="System.Collections" %>
++
++<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
++
++<html xmlns="http://www.w3.org/1999/xhtml">
++<head runat="server">
++    <title>Welcome to the Mobile Home Page</title>
++</head>
++<body>
++    <form id="form1" runat="server">
++    <div>
++        <h1>Welcome to the Mobile Home Page</h1>
++        <% 
++            try
++            {
++                var version = System.Runtime.InteropServices.RuntimeEnvironment.GetSystemVersion();
++                if (version.StartsWith("v2"))
++                { %>
++            <p style="color: Red;"><b>
++            IMPORTANT: The NuGet version of 51Degrees.mobi requires .NET v4 or greater to run automatically.
++            Please change your project to run under .NET v4 then uninstall and reinstall the 51Degrees.mobi NuGet package. 
++            See the <a href="http://51degrees.mobi/Support/Documentation/Foundation/UserGuide.aspx">User Guide</a> for more information.
++            </b></p>    
++        <%  } }
++            catch { }
++        %>
++        <p>Here's some information about the requesting device:</p>
++        <ul>
++            <li>Screen Width: <% =Request.Browser.ScreenPixelsWidth %></li>
++            <li>Screen Height: <% =Request.Browser.ScreenPixelsHeight %></li>
++            <li>LayoutEngine: <% =Request.Browser["LayoutEngine"] %></li>
++            <li>AnimationTiming: <% =Request.Browser["AnimationTiming"] %></li>
++            <li>BlobBuilder: <% =Request.Browser["BlobBuilder"] %></li>
++            <li>CssBackground: <% =Request.Browser["CssBackground"] %></li>
++            <li>CssBorderImage: <% =Request.Browser["CssBorderImage"] %></li>
++            <li>CssCanvas: <% =Request.Browser["CssCanvas"] %></li>
++            <li>CssColor: <% =Request.Browser["CssColor"] %></li>
++            <li>CssColumn: <% =Request.Browser["CssColumn"] %></li>
++            <li>CssFlexbox: <% =Request.Browser["CssFlexbox"] %></li>
++            <li>CssFont: <% =Request.Browser["CssFont"] %></li>
++            <li>CssMediaQueries: <% =Request.Browser["CssMediaQueries"] %></li>
++            <li>CssMinMax: <% =Request.Browser["CssMinMax"] %></li>
++            <li>CssOverflow: <% =Request.Browser["CssOverflow"] %></li>
++            <li>CssPosition: <% =Request.Browser["CssPosition"] %></li>
++            <li>CssText: <% =Request.Browser["CssText"] %></li>
++            <li>CssTransforms: <% =Request.Browser["CssTransforms"] %></li>
++            <li>CssTransitions: <% =Request.Browser["CssTransitions"] %></li>
++            <li>CssUI: <% =Request.Browser["CssUI"] %></li>
++            <li>DataSet: <% =Request.Browser["DataSet"] %></li>
++            <li>DataUrl: <% =Request.Browser["DataUrl"] %></li>
++            <li>DeviceOrientation: <% =Request.Browser["DeviceOrientation"] %></li>
++            <li>FileReader: <% =Request.Browser["FileReader"] %></li>
++            <li>FileSaver: <% =Request.Browser["FileSaver"] %></li>
++            <li>FileWriter: <% =Request.Browser["FileWriter"] %></li>
++            <li>FormData: <% =Request.Browser["FormData"] %></li>
++            <li>Fullscreen: <% =Request.Browser["Fullscreen"] %></li>
++            <li>GeoLocation: <% =Request.Browser["GeoLocation"] %></li>
++            <li>History: <% =Request.Browser["History"] %></li>
++            <li>Html5: <% =Request.Browser["Html5"] %></li>
++            <li>Html-Media-Capture: <% =Request.Browser["Html-Media-Capture"] %></li>
++            <li>Iframe: <% =Request.Browser["Iframe"] %></li>
++            <li>IndexedDB: <% =Request.Browser["IndexedDB"] %></li>
++            <li>Json: <% =Request.Browser["Json"] %></li>
++            <li>Masking: <% =Request.Browser["Masking"] %></li>
++            <li>PostMessage: <% =Request.Browser["PostMessage"] %></li>
++            <li>PreferencesForFrames: <% =Request.Browser["PreferencesForFrames"] %></li>
++            <li>Progress: <% =Request.Browser["Progress"] %></li>
++            <li>Prompts: <% =Request.Browser["Prompts"] %></li>
++            <li>Selector: <% =Request.Browser["Selector"] %></li>
++            <li>Svg: <% =Request.Browser["Svg"] %></li>
++            <li>TouchEvents: <% =Request.Browser["TouchEvents"] %></li>
++            <li>Track: <% =Request.Browser["Track"] %></li>
++            <li>Video: <% =Request.Browser["Video"] %></li>
++            <li>Viewport: <% =Request.Browser["Viewport"] %></li>
++        </ul>
++        <p>See <a href="http://msdn.microsoft.com/en-us/library/system.web.httpbrowsercapabilities_properties.aspx" title="MSDN HttpBrowserCapabilities Documentation">MSDN</a> for details of Request.Browser properties.</p>
++        <p>See <a href="http://51degrees.codeplex.com/documentation" title="51Degrees.mobi Documentation">51Degrees.mobi</a> for user guide.</p>
++		<p>See <a href="http://51degrees.mobi/Products/DeviceData.aspx" title="51Degrees.mobi Device Data">51Degrees.mobi Device Data</a> for details of other data properties and to get weekly data updates.</p>
++        <hr />
++        <% if (Request.Browser.IsMobileDevice == false) { %>
++            <p>The requesting device isn't a mobile. The page must have been requested directly.</p>
++            <p>Try accessing the web site from a mobile device, or a mobile device emulator. A list of popular mobile emulators can be found <a href="http://51degrees.mobi/Support/FAQs/MobileEmulators.aspx" title="Mobile Emulators">here</a>.</p>
++        <% } %>
++        <p>Data Published: <% =FiftyOne.Foundation.Mobile.Detection.Factory.ActiveProvider.PublishedDate %></p>
++    </div>
++    </form>
++</body>
++</html>
+\ No newline at end of file
+Index: packages/51Degrees.mobi.2.1.12.2/lib/NET40/FiftyOne.Foundation.dll
+===================================================================
+Cannot display: file marked as a binary type.
+svn:mime-type = application/octet-stream
+Index: packages/51Degrees.mobi.2.1.12.2/lib/NET40/FiftyOne.Foundation.dll
+===================================================================
+--- packages/51Degrees.mobi.2.1.12.2/lib/NET40/FiftyOne.Foundation.dll	(revision 0)
++++ packages/51Degrees.mobi.2.1.12.2/lib/NET40/FiftyOne.Foundation.dll	(working copy)
+
+Property changes on: packages/51Degrees.mobi.2.1.12.2/lib/NET40/FiftyOne.Foundation.dll
+___________________________________________________________________
+Added: svn:mime-type
+## -0,0 +1 ##
++application/octet-stream
+\ No newline at end of property
+Index: packages/51Degrees.mobi.2.1.12.2/ReadMe.txt
+===================================================================
+--- packages/51Degrees.mobi.2.1.12.2/ReadMe.txt	(revision 0)
++++ packages/51Degrees.mobi.2.1.12.2/ReadMe.txt	(working copy)
+@@ -0,0 +1,27 @@
++51Degrees.mobi is supported by a �freemium� business model. All device
++detection and redirection source code is licenced under the Mozilla
++Public Licence 2 (MPL2) allowing free commercial use.
++
++Lite device data is also licenced under MPL2, is free and embedded
++into the assembly. It includes around 50 properties, associated
++metadata, but does not contain devices released in the last 3 months. 
++
++Premium device data is paid for on an annual subscription with prices
++starting at less than $1 a day and includes the following additional
++benefits.
++
++1.	Weekly device data updates including all the latest devices, 
++	browser and OS versions
++
++2.	Over 50 extra properties (over 100 in total) including IsTablet,
++	screen size in millimetres and detailed model, platform and browser
++	information
++
++3.	Option to enable automatic updates to ensure your web site is 
++	always using the latest device data
++
++4.	Metadata covering all 100+ properties
++
++Find out more by visiting http://51degrees.mobi/Products/DeviceData
++
++Thank you for installing 51Degrees.mobi.
+Index: packages/Microsoft.Web.Infrastructure.1.0.0.0/lib/net40/Microsoft.Web.Infrastructure.dll
+===================================================================
+Cannot display: file marked as a binary type.
+svn:mime-type = application/octet-stream
+Index: packages/Microsoft.Web.Infrastructure.1.0.0.0/lib/net40/Microsoft.Web.Infrastructure.dll
+===================================================================
+--- packages/Microsoft.Web.Infrastructure.1.0.0.0/lib/net40/Microsoft.Web.Infrastructure.dll	(revision 0)
++++ packages/Microsoft.Web.Infrastructure.1.0.0.0/lib/net40/Microsoft.Web.Infrastructure.dll	(working copy)
+
+Property changes on: packages/Microsoft.Web.Infrastructure.1.0.0.0/lib/net40/Microsoft.Web.Infrastructure.dll
+___________________________________________________________________
+Added: svn:mime-type
+## -0,0 +1 ##
++application/octet-stream
+\ No newline at end of property
+Index: packages/Microsoft.Web.Infrastructure.1.0.0.0/Microsoft.Web.Infrastructure.1.0.0.0.nupkg
+===================================================================
+Cannot display: file marked as a binary type.
+svn:mime-type = application/octet-stream
+Index: packages/Microsoft.Web.Infrastructure.1.0.0.0/Microsoft.Web.Infrastructure.1.0.0.0.nupkg
+===================================================================
+--- packages/Microsoft.Web.Infrastructure.1.0.0.0/Microsoft.Web.Infrastructure.1.0.0.0.nupkg	(revision 0)
++++ packages/Microsoft.Web.Infrastructure.1.0.0.0/Microsoft.Web.Infrastructure.1.0.0.0.nupkg	(working copy)
+
+Property changes on: packages/Microsoft.Web.Infrastructure.1.0.0.0/Microsoft.Web.Infrastructure.1.0.0.0.nupkg
+___________________________________________________________________
+Added: svn:mime-type
+## -0,0 +1 ##
++application/octet-stream
+\ No newline at end of property
+Index: packages/repositories.config
+===================================================================
+--- packages/repositories.config	(revision 0)
++++ packages/repositories.config	(working copy)
+@@ -0,0 +1,4 @@
++﻿<?xml version="1.0" encoding="utf-8"?>
++<repositories>
++  <repository path="..\packages.config" />
++</repositories>
+\ No newline at end of file

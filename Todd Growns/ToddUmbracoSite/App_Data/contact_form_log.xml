@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logs>
+  <log time="17:13:26" date="21/08/2012">
+    <field alias="name">Bklah</field>
+    <field alias="addressLine1">14 Wrens Close</field>
+    <field alias="addressLine2">ely</field>
+    <field alias="email">amanda.earlam@gmail.com</field>
+    <field alias="message"><![CDATA[sdfkjsdlfkjsdlkfjsdlkfjl]]></field>
+  </log>
+</logs>

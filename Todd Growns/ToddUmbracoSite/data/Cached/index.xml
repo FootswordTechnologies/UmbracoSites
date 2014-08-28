@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<imageIndex>
+  <image>
+    <imageText>Hello, world!</imageText>
+    <cachedImage>
+      <fileName>xx3nwy00.gif</fileName>
+      <dateCreated>Wed, 22 Aug 2012 14:38:24 GMT</dateCreated>
+      <dateLastAccessed>Tue, 11 Sep 2012 09:43:53 GMT</dateLastAccessed>
+      <imageFormat>gif</imageFormat>
+      <rotate>0</rotate>
+      <flip />
+      <colorMode />
+      <crop />
+      <width>0</width>
+      <height>0</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+      <antiAlias>True</antiAlias>
+      <fontName>Arial</fontName>
+      <fontSize>32</fontSize>
+      <lineHeight>-1</lineHeight>
+      <fontStyle>Regular</fontStyle>
+      <fontColor>#000000</fontColor>
+      <align>left</align>
+      <valign>middle</valign>
+    </cachedImage>
+    <cachedImage>
+      <fileName>fl4x4vtz.gif</fileName>
+      <dateCreated>Wed, 22 Aug 2012 14:38:24 GMT</dateCreated>
+      <dateLastAccessed>Wed, 22 Aug 2012 14:38:24 GMT</dateLastAccessed>
+      <imageFormat>gif</imageFormat>
+      <rotate>0</rotate>
+      <flip />
+      <colorMode />
+      <crop />
+      <width>0</width>
+      <height>0</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+      <antiAlias>True</antiAlias>
+      <fontName>Arial</fontName>
+      <fontSize>32</fontSize>
+      <lineHeight>-1</lineHeight>
+      <fontStyle>Regular</fontStyle>
+      <fontColor>#000000</fontColor>
+      <align>left</align>
+      <valign>middle</valign>
+    </cachedImage>
+  </image>
+</imageIndex>

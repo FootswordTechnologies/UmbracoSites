@@ -1,0 +1,52 @@
+<!doctype html>  
+<html lang="en">  
+<head>  
+  <meta charset="utf-8">  
+  <title>The HTML5 Herald</title>  
+  <meta name="description" content="The HTML5 Herald">  
+  <meta name="author" content="SitePoint">  
+  <link rel="stylesheet" href="resize.css?v=1.0">  
+  <!--[if lt IE 9]>  
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>  
+  <![endif]-->  
+  <style>
+  </style>
+</head>  
+<body>  
+<div id="post">
+Nec porttitor integer, eros facilisis, tristique nisi cursus turpis sociis placerat nunc porttitor, vut tempor dictumst rhoncus cursus sed dolor ridiculus, sed scelerisque magna, sed, penatibus turpis? Vel turpis tristique? Pulvinar integer? Ac dignissim rhoncus nascetur eu et tristique, nec nisi amet! Duis sit pulvinar magna a vel? Augue in pellentesque sagittis facilisis eros! Elementum, augue, lundium, urna nunc pulvinar, aliquam facilisis? Sociis! A cras dictumst! Ac pulvinar lundium pellentesque, dolor tortor, turpis ridiculus nec montes scelerisque cum. Est tincidunt, lundium nunc eu nec. Habitasse! Auctor tincidunt turpis, amet nec! Platea mus sociis, a est rhoncus, magna ac! Porttitor scelerisque? Dictumst placerat duis auctor arcu. Ultrices? Dignissim nisi, a purus elit nec sed odio, magna auctor dolor magna tortor lundium.
+             
+<img src="test1.jpg">
+ 
+Nisi sed porttitor, mid aliquet, a enim nunc scelerisque nunc elit? Ultricies adipiscing dolor, porta integer. Adipiscing nec dolor adipiscing sit, mid platea in magna porttitor! Ac placerat porta vel proin tempor tristique! Aenean pulvinar tincidunt aliquet hac in duis duis sociis turpis! Velit? Scelerisque amet enim, phasellus natoque auctor augue nascetur ridiculus elit sociis ac urna, ultrices nascetur. Lundium nunc, cum in elit, turpis auctor! Vel in amet. Turpis massa tincidunt non vel a? Placerat nisi amet odio a sit pulvinar, arcu in lorem pulvinar? Elementum, aliquet non placerat purus! Rhoncus amet purus ut, dictumst turpis integer duis sit nisi, turpis ac, arcu. Lacus et mus vut adipiscing, porttitor parturient dictumst facilisis, parturient montes adipiscing aliquet pulvinar dictumst.
+ 
+ 
+<img src="test2.jpg">
+ 
+Facilisis. Nunc a magnis montes quis, odio cum mus dignissim eu, rhoncus adipiscing odio elementum sit turpis enim urna! Nisi in sed dictumst sit et. Sociis? Odio ac mus, augue nec vut etiam in, pulvinar. Diam cursus turpis ac. Tristique nisi. Sit velit aenean, sociis montes elementum aenean in arcu ultricies nec non enim nec augue adipiscing aliquam a odio, amet tempor dictumst! Nisi, turpis. Placerat cursus urna lorem purus dolor in integer massa dolor vel proin, pulvinar et, aenean proin dolor? Scelerisque. Lundium proin turpis elit? Dignissim hac. Turpis lorem augue, parturient augue habitasse amet a nisi egestas tortor rhoncus et porta, odio ut et, nascetur integer et et nec mus sit, risus habitasse massa, rhoncus augue aliquam.
+        </div> 
+        <script src="jquery-1.8.2.min.js"></script>
+<script>
+	function resizeImages(el){                     
+		$(el).each(function(){ 
+			var maxWidth = $(this).parent().width();
+			var imgWidth = $(this).width();
+			var imgHeight = $(this).height();
+			
+			var newWidth = maxWidth;
+			var ratio = imgWidth/maxWidth;
+			var newHeight = imgHeight/ratio;
+			
+			$(this).css({
+				height:newHeight,
+				width:newWidth
+			});
+		});  
+	}
+		
+	$(document).ready(function(){
+		resizeImages('#post img');
+		});
+</script>  
+</body>  
+</html> 

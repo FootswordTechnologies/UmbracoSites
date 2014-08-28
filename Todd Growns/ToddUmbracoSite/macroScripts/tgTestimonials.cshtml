@@ -1,0 +1,24 @@
+
+<ul>        
+    @foreach (var t in Model.singleTestimonials)
+    {
+        var formattedDate = t.dateWorkCompleted.ToString("MMMM, yyyy");
+        var linkedProjectId = t.linkedProject;
+        var projectExists = !string.IsNullOrEmpty(linkedProjectId);
+            
+        <li>
+            <h2>@t.Name</h2>
+            <p>@t.recommendation</p>
+            @{
+                if(projectExists)
+                {
+                    var projectNode = Model.NodeById(linkedProjectId);
+                    <p>The work I did for @t.Name can be seen at: <a href="@projectNode.NiceUrl">@projectNode.Name</a></p>
+                }
+            }
+            <h3>Work Completed: @formattedDate</h3>
+
+        </li>
+    }
+</ul>
+                       

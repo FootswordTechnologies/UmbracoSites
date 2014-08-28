@@ -1,0 +1,38 @@
+﻿@using System.Globalization
+@{
+    int yearsExperience = ((DateTime.Now - Model.dateStartedCareer).Days) / 365;
+    var pitch = Model.homeSummary;
+    pitch = pitch.Replace("%%experience%%", yearsExperience.ToString(CultureInfo.InvariantCulture));
+}
+
+<section class="example">
+    <h1>@Model.exampleHeader</h1>
+    <p><span><img src="/ImageGen.ashx?image=@Model.examplePicture"/></span></p>
+</section>
+<section class="pitch">
+    <img src="../resources/icons/brownPlane.png" alt="Plane with shavings"/>
+    <h1>@Model.homeHeader</h1>
+    <p>@Html.Raw(pitch)</p>
+</section>
+<section class="services">
+    <h2><a href="/services.aspx">Services provided include</a></h2>
+    @{
+        var services = @Model.AncestorOrSelf().Services.First().singleServices.OrderBy("serviceType");
+        var shuffled = services.Shuffle(new Random());
+        int randomServicesCount;
+        bool parsed = Int32.TryParse(@Model.numberRandomServices.ToString(), out randomServicesCount);
+        if (!parsed)
+        {
+            randomServicesCount = 5;
+        }
+    }
+    <ul>
+        @foreach(var s in shuffled.Take(randomServicesCount-2))
+        {
+            <li>@s.Name, </li>
+        }
+        <li>@shuffled[randomServicesCount - 1].Name and </li>
+        <li>@shuffled[randomServicesCount].Name</li>
+    </ul>
+    <p><strong>Or why not browse my <a href="/projects.aspx">projects</a>?</strong></p>
+</section>

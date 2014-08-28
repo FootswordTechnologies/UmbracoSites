@@ -1,0 +1,19 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/masterpages/ToddGrowns.master" AutoEventWireup="true" %>
+
+
+<asp:Content ContentPlaceHolderId="head" runat="server">
+  <!-- Insert "head" markup here -->
+  
+</asp:Content>
+  
+<asp:Content ContentPlaceHolderId="mainContentPlaceholder" runat="server">
+  <h1>Projects</h1>
+  <umbraco:Macro Alias="TgProjects" runat="server"></umbraco:Macro>
+</asp:Content>
+
+<asp:Content ContentPlaceHolderId="pageScripting" runat="server">
+    <script type="text/javascript">
+        $("#mainContent").addClass("projects");
+    </script>
+
+</asp:Content>

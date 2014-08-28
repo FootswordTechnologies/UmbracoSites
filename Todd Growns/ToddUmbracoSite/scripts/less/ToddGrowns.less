@@ -1,0 +1,721 @@
+﻿
+
+@font-face {
+    font-family: 'MerriweatherRegular';
+    src: url('../../font/merriweather/Merriweather-webfont.eot');
+    src: url('../../font/merriweather/Merriweather-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../font/merriweather/Merriweather-webfont.woff') format('woff'),
+         url('../../font/merriweather/Merriweather-webfont.ttf') format('truetype'),
+         url('../../font/merriweather/Merriweather-webfont.svg#MerriweatherRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SymbolSignsBasisset';
+    src: url('../../font/symbolSigns/symbol-signs-webfont.eot');
+    src: url('../../font/symbolSigns/symbol-signs-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../font/symbolSigns/symbol-signs-webfont.woff') format('woff'),
+         url('../../font/symbolSigns/symbol-signs-webfont.ttf') format('truetype'),
+         url('../../font/symbolSigns/symbol-signs-webfont.svg#SymbolSignsBasisset') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Variables */
+@Rosewood: #901f0f;
+@Ebony: #1C1413;
+@Cherry: #C85A1F;
+@Walnut: #9E715C;
+@Satin: #BC8554;
+@Cream: #EDDEA7;
+
+@gentlePadding: 10px;
+@plainFont: Verdana, Sans-Serif;
+@serifFont:MerriweatherRegular, Times New Roman, Serif; 
+
+@rosewoodBorder:2px solid @Rosewood;
+@walnutBorder: 2px solid @Walnut;
+@satinBorder: 2px solid @Satin;
+
+/* mixins */
+.pictureShadow{	
+	padding:5px;
+	margin:10px;
+	-moz-box-shadow: 3px 3px 5px #888;
+	-webkit-box-shadow: 3px 3px 5px #888;
+	box-shadow: 3px 3px 5px #888;
+}
+
+html 
+{
+    background-color: @Rosewood;
+}
+
+body   
+{
+    font-family: @plainFont;
+    font-size: 10px;
+    color: @Ebony;
+	width:90%;
+    margin: auto;
+    margin-top: 10px;
+    background-color: white;
+}
+
+
+
+strong{
+	font-weight:bold;
+}
+
+#content_wrapper{
+    padding: @gentlePadding;
+}
+
+h1, h2, .contact legend
+{
+    font-family: @serifFont; 
+}
+
+header#mainHeader 
+{
+    border: @rosewoodBorder;
+	padding:5px;
+	overflow:hidden;
+}
+
+header#mainHeader h1 img{
+	width:10%;
+}
+
+header#mainHeader a#homeLink img {
+	float:left;
+}
+
+header#mainHeader img#hammer{
+	float:right;
+}
+
+header#mainHeader h1 
+{
+    font-size: 350%;
+    text-align: center;
+    font-weight: bold;
+	width:100%;
+	line-height:2.8em;
+}
+
+nav#mainNav 
+{
+    border: @rosewoodBorder;
+    padding: @gentlePadding;
+    margin-top: 10px;    
+	position:relative;
+}
+
+nav#mainNav ul {
+    list-style: none;
+}
+
+nav#mainNav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav#mainNav li:last-child 
+{
+    margin-right: 0;
+}
+
+nav#mainNav li a 
+{
+    text-decoration: none;
+    color: @Rosewood;
+    font-size: 200%;
+    font-family: @serifFont;
+    font-weight: bold;
+    padding: 5px;
+}
+
+nav#mainNav li a.selected {
+    border: @walnutBorder;
+}
+
+nav#mainNav li a:hover 
+{
+    color: White;
+    background-color:rgba(144,31,15, 0.8);
+}
+
+nav#mainNav div#addit{
+	position:absolute;
+	top:30%;
+	right:5px;
+}
+
+div#mainContent {
+    border: @rosewoodBorder;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+div#mainContent p {
+    margin-bottom: 5px;
+}
+
+div#mainContent h1, .contact legend {
+    font-size: 300%;
+    margin-bottom: 10px;
+}
+
+.home p:only-of-type{
+    font-size: 140%;
+    margin-bottom:10px;
+}
+
+footer#mainFooter 
+{
+    border: @rosewoodBorder;
+    padding: 5px;
+    margin-top: 10px;
+    overflow: hidden;
+	position:relative;
+}
+
+footer#mainFooter nav 
+{
+    display: inline-block;
+    margin-left: 80px;
+}
+
+footer#mainFooter li 
+{
+    display: inline-block;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+footer#mainFooter li:last-child 
+{
+    margin-right: 0;
+}
+
+footer#mainFooter li a:hover 
+{
+    border-bottom: 1px solid #C85A1F;
+}
+
+footer#mainFooter li a 
+{
+    text-decoration: none;
+    color: inherit;
+    font-size: 160%;
+    padding: 3px;
+}
+
+footer#mainFooter li a.selected {
+    border: @rosewoodBorder;
+}
+
+footer#mainFooter span#footswordLink 
+{
+    float: right;
+}
+
+footer#mainFooter span#footswordLink a 
+{
+    text-decoration: none;
+    color: inherit;    
+}
+
+footer#mainFooter span#footswordLink img 
+{
+    height: 60px;
+    vertical-align: middle;    
+}
+
+/* general */
+.right {
+    float: right;
+}
+
+/* Home */
+.home section {
+    overflow: hidden;
+	margin-bottom:10px;
+}
+
+.home section.example p span > img{
+	.pictureShadow;
+	margin:auto;
+}
+
+.home section.pitch img{
+	float:right;
+	width:15%;
+}
+
+.home section.example img{
+	display:block;
+	margin:10px auto;
+	width:60%;
+}
+
+.home section.services ul{
+	margin-bottom:10px;
+}
+
+.home section.services ul li{
+	display:inline;
+	font-size:140%;
+}
+
+.home section h2{
+	font-size:200%;
+	text-align:left;
+}
+
+.home section p a, .home section h2 a{
+	text-decoration:none;
+	color:@Rosewood;
+}
+
+.home section.example div {
+    float: left;
+    width: 70%;
+}
+
+.home section.example div span {
+    position: relative;    
+}
+
+.home section.example div #arrows {
+    position: absolute;
+    bottom: 20px;
+    right: 20px; 
+}
+
+.home section.example article {
+    float: right;
+    width: 30%;
+}
+
+.home section.example article p {
+    font-size: 140%;
+}
+
+/* Contact page */
+
+.contact p{
+	font-size:120%;
+}
+
+.contact strong{
+font-weight:bold;
+}
+
+.contact p.note{
+	padding-top:20px;
+	font-weight:bold;
+}
+
+.contact input.error, .contact textarea.error{
+	background-color:@Cream; 
+}
+
+.contact p.error{
+	color:Red;
+	background-color:none;
+}
+
+
+.contact label {
+    display: block;
+    font-size: 160%;
+}
+
+.contact input, .contact textarea {
+    width: 90%;
+    margin-top: 3px;
+    margin-bottom: 5px;
+    border: @walnutBorder;
+}
+
+.contact input {
+    height: 30px;
+}
+
+.contact .checkboxPara label, .contact .checkboxPara input {
+	display:inline;
+}
+
+.contact .checkboxPara input{
+	width:20%;
+	vertical-align:middle;
+	float:right;
+}
+
+.contact button {
+    background-color: @Cherry;
+    color: white;
+    font-weight: bold;
+    font-size: 160%;
+    width: 240px;
+    height: 40px;
+    border:@walnutBorder;/* to make it line up with the textarea */
+    margin-top: 20px;
+}
+
+.contact div.column{
+    float: left;
+    width: 50%;
+}
+
+.contact div.column img {
+    float: right;
+    margin-top: -30px;
+	width:20%;
+}
+
+.contact label.hide, .contact legend.hide{ display: none;}
+
+/* services page*/
+.services section {
+    border: @satinBorder;
+    padding: 10px;
+    overflow: hidden;
+    margin-bottom: 3px;
+}
+
+.services div.column{
+	width:50%;
+	float:left;
+}
+
+.services section ul {
+    width: 100%;
+	min-height:300px;
+	position:relative;
+}
+
+.services section li {
+    font-size: 160%;
+    margin-bottom: 8px;
+}
+
+.services section li img{
+	display:none;
+	.pictureShadow;
+	max-width:40%;
+	position:absolute;
+	bottom:0;
+	right:0px;
+}
+
+.services section li h3.noImage{
+	display:none;
+	color:@Cherry;
+	position:absolute;
+	top:-20px;
+	right:30%;
+}
+
+.services section li.chosen img{
+	display:inline;
+}
+
+.services section li.chosen h3.noImage{
+	display:inline;
+}
+
+.services section li h2{
+	position:relative;
+	width:50%;
+}
+
+.services section li.chosen h2{
+	text-decoration:underline;
+}
+
+.services section li span{
+	font-family:SymbolSignsBasisset;
+	font-size:200%;
+	padding-left:10px;
+	color:@Rosewood;
+	position:absolute;
+	right:10%;
+	top:-.5em;
+	display:none;
+}
+
+.services section li.chosen span{
+	display:inline;
+}
+
+/* About Todd */
+.about{
+	position:relative;
+}
+
+.about section {
+    overflow: hidden;
+	margin-bottom:20px;
+}
+
+.about section div.column{
+    float: left;
+    width: 50%;
+}
+
+.about section p{
+    font-size: 140%;
+}
+
+.about section p a{
+	text-decoration:none;
+	color:@Rosewood;
+}
+
+.about img#saw{
+	position:absolute;
+	bottom:10px;
+	right:10px;
+	width:10%;
+}
+
+.about section li{
+	margin-bottom: 5px;
+}
+
+.about section li h3{
+	font-size:140%;
+	font-weight:bold;
+}
+
+.about section li span{
+	font-size:120%;
+}
+
+.about section h2{
+	font-size:200%;
+	margin-top:10px;
+}
+
+.about section#profile img {
+    float: right;
+	max-width:45%;
+	.pictureShadow;
+	padding-top:0;
+	margin-top:0;
+}
+
+#map_canvas {
+    width: 300px;
+    height: 300px;
+    float: left;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* projects */
+
+.projects li{
+    display: block;
+    border: @satinBorder;
+    padding: @gentlePadding;
+    overflow: hidden;
+    margin-bottom: 3px;
+}
+
+
+.projects li h2 {
+    font-size: 200%;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.projects li h2 a{
+	text-decoration:none;
+	color:inherit;
+}
+
+.projects li h2 a:hover{
+	color:@Rosewood;
+}
+
+.projects li article{
+	width:100%;
+}
+
+.projects li img {
+	float:right;
+	max-height:200px;
+	.pictureShadow
+}
+
+
+.projects li article p {
+    font-size: 140%;
+}
+
+.projects li p a{
+	text-decoration:none;
+	color:@Rosewood;
+}
+
+.projects h3{
+    font-size: 120%;
+    font-weight:bold;
+	margin-bottom:10px;
+	display:block;
+}
+
+
+
+/* Testimonials */
+.testimonials li {
+    display: block;
+    border:@satinBorder;
+    padding: @gentlePadding;
+    overflow: hidden;
+    margin-bottom: 3px;    
+}
+
+.testimonials li h2 {
+    font-size: 160%;
+    text-align: left;
+    margin-bottom: 5px;
+}
+.testimonials li h3{
+	font-size:120%;
+	font-weight:bold;
+}
+
+.testimonials li p {
+    font-size: 140%;
+}
+
+/* single project */
+.singleProject section{
+	width:95%;
+	border:2px solid #9E715C;
+	margin-bottom:10px;
+	padding:10px;
+	overflow:hidden;
+	position:relative;
+}
+
+.singleProject p{
+	font-size:120%;
+}
+
+.singleProject blockquote{
+	border:2px solid @Satin;
+	border-radius:6px;
+	margin-top:10px;
+	padding:5px;
+}
+.singleProject  h4{
+    font-size: 120%;
+	display:block;
+}
+
+.singleProject blockquote h3{
+	font-size:140%;
+	font-family:@serifFont;
+	margin-bottom:5px;
+}
+
+.singleProject ul.slides li h2, .singleProject h2{
+    font-size: 160%;
+    text-align: left;
+	line-height:2em;
+	background-color:White;
+	width:100%;
+}
+
+
+
+.singleProject p a{
+	text-decoration:none;
+	color:@Rosewood;
+}
+
+.singleProject ul.slides li h2{
+    margin: 5px 10px;
+}
+
+.singleProject .flexslider{
+	width:60%;
+}
+
+.singleProject .description{
+	width: 35%;
+	position:absolute;
+	top:0;
+	right:0;
+	padding: @gentlePadding;
+}
+
+.singleProject .flexslider img{
+	max-width:500px;
+	.pictureShadow;
+	margin:auto; /*declare after the .pictureShadow mixin, as that contains another margin declaration */
+}
+
+.singleProject .flex-control-nav {
+	width: 100%; 
+	text-align: center;
+	padding-bottom:5px;
+}
+
+
+/*********** pager used on projects page ************/
+ul.pager
+{
+    width:100%;
+    clear:both;
+    padding:0.5em 0 0 0;
+    display:block;
+}
+
+ul.pager li{
+	display:inline-block;
+	padding:0;
+}
+
+ul.pager a
+{
+    font-size:200%;
+	line-height:1.5em;
+    color:White;
+    background-color:@Walnut;
+    text-decoration:none;
+	padding:3px;
+}
+
+ul.pager a:hover
+{
+    background-color:@Cherry;
+}
+
+ul.pager li.selected a
+{
+    background-color:@Rosewood;
+}
+
+
+/* porttrait mobile */
+@media screen and (max-device-width:550px){
+	html{
+		background-color:white;
+	}
+
+	body{
+		width:100%;
+		font-size:14px;
+	}
+}
+

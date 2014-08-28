@@ -1,0 +1,151 @@
+﻿@Rosewood: #901f0f;
+@Ebony: #1C1413;
+@Cherry: #C85A1F;
+@Walnut: #9E715C;
+@Satin: #BC8554;
+@Cream: #EDDEA7;
+
+@gentlePadding: 10px;
+@plainFont: Verdana, Sans-Serif;
+@serifFont: Times New Roman, Serif; 
+
+@rosewoodBorder:2px solid @Rosewood;
+@walnutBorder: 2px solid @Walnut;
+@satinBorder: 2px solid @Satin;
+
+html 
+{
+    width: 1020;
+    background-color: @Rosewood;
+}
+
+body   
+{
+    font-family: @plainFont;
+    font-size: 10px;
+    color: @Ebony;
+    width: 940px;
+    margin: auto;
+    margin-top: 10px;
+    background-color: white;
+}
+
+strong{
+	font-weight:bold;
+}
+
+#content_wrapper{
+    padding: @gentlePadding;
+}
+
+h1, h2, .contact legend
+{
+    font-family: @serifFont; 
+}
+
+header#mainHeader 
+{
+    border: @rosewoodBorder;
+    padding: 20px 10px;
+	background:url("resources/icons/MalletAndChiselTransparent.png") no-repeat top right;
+}
+
+header#mainHeader img {
+	height:80px;
+	float:left;
+	margin-top:-16px;
+}
+
+header#mainHeader h1 
+{
+    font-size: 400%;
+}
+
+header#mainHeader h1, h2 
+{
+    text-align: center;
+    font-weight: bold;
+}
+
+header#mainHeader h2#maincontent h2 
+{
+    font-size: 160%;
+}
+
+header#mainHeader h3 {
+    float: right;
+    font-family: @plainFont;
+    font-size: 120%;
+}
+
+div#mainContent {
+    border: @rosewoodBorder;
+    padding: 20px;
+    margin-top: 10px;
+}
+div#mainContent section{
+	width:430px;
+	margin:auto;
+}
+
+div#mainContent p {
+	font-size:12px;
+    margin-bottom: 5px;
+}
+
+div#mainContent p a, div#mainContent h2 a{
+	color:@Cherry;
+}
+
+div#mainContent p img{
+	width:400px;
+	margin:20px auto;
+	padding:5px;
+	border:2px solid @Walnut;
+}
+
+div#mainContent h1, .contact legend {
+    font-size: 32px;
+    margin-bottom: 10px;
+	font-weight:normal;
+}
+
+div#mainContent h2{
+	font-size:28px;
+	text-align:left;
+	font-weight:normal;
+}
+
+
+
+div#mainContent p:only-of-type {
+    font-size: 140%;
+    margin-bottom:10px;
+}
+
+footer#mainFooter 
+{
+    border: @rosewoodBorder;
+    padding: 5px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+
+footer#mainFooter span#footswordLink 
+{
+    float: right;
+}
+
+footer#mainFooter span#footswordLink a 
+{
+    text-decoration: none;
+    color: inherit;    
+}
+
+footer#mainFooter span#footswordLink img 
+{
+    height: 60px;
+    vertical-align: middle;    
+}
+

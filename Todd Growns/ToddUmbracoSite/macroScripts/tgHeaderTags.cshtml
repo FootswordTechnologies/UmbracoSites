@@ -1,0 +1,21 @@
+﻿@using System.Text
+@{
+    <title>@Model.Name</title>  
+    @* This meta-tag is Microsoft's best idea for forcing standards on its browsers. As such it has to be better than 
+    conditional comments*@
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="@Model.tgMetaDescription" />
+    var services = Model.AncestorOrSelf("Home").Services[0].ChildrenAsList;
+    var servicesKeywords = new StringBuilder();
+    foreach(var service in services)
+    {
+        servicesKeywords.Append(string.Format("{0}, ",service.Name));
+    }
+    <meta name="keywords" content="@Model.tgMetaKeywords, @servicesKeywords" />
+    <meta content="&copy;@DateTime.Now.Year Footsword Technologies" name="copyright" />
+    <meta name="author" content="Amanda Earlam" />
+    <meta name="WebsiteSpark" content="3VYoL7ix9i" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/icons/favicon.ico" />
+    
+}

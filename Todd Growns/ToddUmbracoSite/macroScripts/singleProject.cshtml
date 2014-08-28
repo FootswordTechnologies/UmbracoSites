@@ -1,0 +1,46 @@
+﻿@using umbraco.MacroEngines
+@{
+    var parentImage = Model.mainProjectImage;
+}
+<section class="slider">
+    <div class="flexslider">
+        <ul class="slides">
+            <li>
+                <img src="@parentImage" alt="@Model.Name" />
+                <h2>@Model.Name</h2>
+            </li>
+            @* include the parent image first in the list*@
+            @foreach(var i in Model.projectImages)
+            {
+                var picture = @i.storyImage;
+                <li>
+                    <img src="@picture" alt="@i.Name" title="@i.Name"/>
+                    <h2>@i.Description</h2>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="description">
+        <h1>@Model.Name</h1>
+        @Model.projectDescription                        
+        @if(!string.IsNullOrEmpty(@Model.projectTown))
+        {
+            <h2>Project Location: @Model.projectTown</h2>
+        }
+        <h4>@Model.dateOfProject.ToString("MMMM, yyyy")</h4>
+        @* add a testimonial if there is one.*@ 
+        @{
+            var homeNode = new DynamicNode(-1);
+            var testimonials = homeNode.Descendants("Testimonials").Items[0];
+            foreach (var testimonial in testimonials.ChildrenAsList)
+            {
+                if (testimonial.GetPropertyValue("linkedProject") == Model.Id.ToString())
+                {
+                    <blockquote><h3>@testimonial.Name recommended this work</h3>
+                    <p>@testimonial.GetPropertyValue("recommendation")</p>
+                    <p>More <a href="@library.NiceUrl(testimonials.Id)">testimonials ...</a></p></blockquote>
+                }
+            }
+        }
+    </div>
+</section>

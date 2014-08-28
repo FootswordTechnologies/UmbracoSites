@@ -1,0 +1,27 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/masterpages/ToddGrowns.master" AutoEventWireup="true" %>
+
+
+<asp:Content ContentPlaceHolderId="head" runat="server">
+  <!-- Insert "head" markup here -->
+</asp:Content>
+
+<asp:Content ContentPlaceHolderId="mainContentPlaceholder" runat="server">
+  <umbraco:Macro runat="server" language="cshtml">
+      @{
+      Page.MailFrom = Model.AncestorOrSelf().ownerEmail;
+      Page.MailFromName = Model.AncestorOrSelf().siteOwnerName;
+      Page.MailSubject = Model.emailSubject;
+      Page.FormLabelMessage = "Enquiry";
+      Page.EnableSsl = "true";
+      Page.SubmitButtonTitle = "Send Enquiry";
+      @RenderPage("~/macroscripts/tgContactForm.cshtml")
+  }
+  </umbraco:Macro>
+
+</asp:Content>
+
+<asp:Content ContentPlaceHolderId="pageScripting" runat="server">
+  <script type="text/javascript">
+        $("#mainContent").addClass("contact");
+    </script>
+</asp:Content>

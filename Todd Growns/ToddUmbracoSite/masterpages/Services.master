@@ -1,0 +1,27 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/masterpages/ToddGrowns.master" AutoEventWireup="true" %>
+
+<asp:Content ContentPlaceHolderId="head" runat="server">
+  <!-- Insert "head" markup here -->
+</asp:Content>
+
+<asp:Content ContentPlaceHolderId="mainContentPlaceholder" runat="server">
+  <umbraco:Macro Alias="tgServices" runat="server"></umbraco:Macro>  
+</asp:Content>
+
+<asp:Content ContentPlaceHolderId="pageScripting" runat="server">
+  <script type="text/javascript">
+      $("#mainContent").addClass("services");
+      // First item on each list is chosen by default on entering page.
+      var firstitems = $("#mainContent ul li:first-child").addClass("chosen");
+      $("section ul li").click(applyChosen);
+      $("section ul li").hover(applyChosen);
+      
+
+      function applyChosen() {
+          var siblings = $(this).parents("ul").first().find("li");
+          $(siblings).removeClass('chosen');
+          $(this).addClass("chosen");
+          return false; // prevent page jumping back to the top.
+      }
+    </script>
+</asp:Content>

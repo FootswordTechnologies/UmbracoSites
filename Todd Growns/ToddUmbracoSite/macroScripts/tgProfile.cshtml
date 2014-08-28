@@ -1,0 +1,22 @@
+﻿@using System.Globalization
+@{
+  var siteOwnerName = @Model.AncestorOrSelf().siteOwnerName;
+  int yearsExperience = ((DateTime.Now - Model.AncestorOrSelf().dateStartedCareer).Days) / 365;
+  var about = Model.aboutDescription;
+  about = about.ToString().Replace("%%experience%%", yearsExperience.ToString(CultureInfo.InvariantCulture));
+ }
+<article>
+<h1>@siteOwnerName</h1>
+<img src="/ImageGen.ashx?image=@Model.friendlyPicture" alt='@siteOwnerName'/>
+@Html.Raw(about)
+
+<h2>Qualifications</h2>
+@{
+  var qualifications = @Model.singleQualifications;
+  }
+  <ul>
+  @foreach(var q in qualifications){
+       <li><h3><acronym title="@q.FullName">@q.Name</acronym></h3><span>@q.Description</span></li>                                 
+   }
+  </ul>
+</article>

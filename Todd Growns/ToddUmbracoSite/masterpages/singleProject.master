@@ -1,0 +1,21 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/masterpages/ToddGrowns.master" AutoEventWireup="true" %>
+
+<asp:content ContentPlaceHolderId="head" runat="server">
+    <link rel="stylesheet" href="../scripts/flexslider/flexslider.css"/>
+</asp:content>
+
+<asp:content ContentPlaceHolderId="mainContentPlaceholder" runat="server">
+  <umbraco:Macro Alias="tgSingleProject" runat="server"></umbraco:Macro>
+</asp:content>
+
+<asp:content ContentPlaceHolderId="pageScripting" runat="server">
+    <script defer src="../scripts/flexslider/jquery.flexslider.js"></script>
+    <script type="text/javascript">
+        $("#mainContent").addClass("singleProject");
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide", smoothHeight: "true"
+            });
+        });
+    </script>
+</asp:content>

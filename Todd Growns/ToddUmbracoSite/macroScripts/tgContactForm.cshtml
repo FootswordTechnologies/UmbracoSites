@@ -1,0 +1,263 @@
+@using System.Text;
+@using System.Net.Mail;
+@{ 
+    Page.FormVariables = new FormVariables(Page, Model);
+    Page.Errors = new List<string>();
+    Page.Model = Model;
+}
+
+<div>
+    @(HttpContext.Current.Request["form-posted"] != "1" ? RenderContactForm() : TrySendForm())
+</div>
+
+@helper RenderErrorMessage()
+    {
+        if (Page.Errors.Count > 0 && !Page.Errors.Contains("Other"))
+        {
+            <p class="note">@Page.FormVariables.ErrorsInForm</p>
+        }
+        if (Page.Errors.Count > 0 && Page.Errors.Contains("Other"))
+        {
+            <p class="note">@Page.FormVariables.ErrorSendingForm</p>
+        }
+}
+
+@helper RenderContactForm()
+    {
+        <a id="cultivcontactform"></a>
+        <form action="#cultivcontactform" method="post">
+        <fieldset>
+            <legend>@Model.headerText</legend>
+            <p>@Model.FormText</p>
+            <p>Or call my mobile: <strong>@Model.AncestorOrSelf().siteOwnerPhone</strong></p>
+
+            <div class="column">
+                <input type="hidden" name="form-posted" value="1" />
+
+                @RenderTextField(Page.FormVariables.Name, Page.FormVariables.NameFieldName, Page.FormVariables.NameFieldError, string.Empty)
+                @RenderTextField(Page.FormVariables.Address1, Page.FormVariables.Address1FieldName, Page.FormVariables.AddressFieldError, string.Empty)
+                @RenderTextFieldWithHiddenLabel(Page.FormVariables.Address2, Page.FormVariables.Address2FieldName, string.Empty, string.Empty)
+                @RenderTextField(Page.FormVariables.Email, Page.FormVariables.EmailFieldName, Page.FormVariables.EmailFieldError, string.Empty, "email")
+            </div>
+            <div class="column">
+                @RenderTextareaField(Page.FormVariables.Message,
+                    Page.FormVariables.MessageFieldName,
+                    Page.FormVariables.MessageFieldError,
+                    string.Empty)
+                <p>
+                    <button type="submit" id="cultivcontactformsubmit">@Page.FormVariables.SubmitButtonTitle</button>
+                </p>
+                <img src="../resources/icons/HammerAndNails.jpg" alt="Hammer and Nails"/>
+            </div>
+            @if (Page.Errors.Count > 0 && !Page.Errors.Contains("Other"))
+            {
+                <p class="note">@Page.FormVariables.ErrorsInForm</p>
+            }
+            @if (Page.Errors.Count > 0 && Page.Errors.Contains("Other"))
+            {
+                <p class="note">@Page.FormVariables.ErrorSendingForm</p>
+            }
+        </fieldset>
+    </form>
+}
+
+@helper RenderTextField(string fieldLabel, string fieldName, string errorText, string className, string typeString = "text")
+    {
+    <p>
+        <label for="@fieldName">@fieldLabel</label>
+        <input type="@typeString" id="@fieldName" name="@fieldName" 
+               @GetClassString(fieldName, className, Page.Errors)
+               value="@HttpContext.Current.Request[fieldName]" />
+        @if (Page.Errors.Contains(fieldName))
+        {
+          <br /><span class="error">@errorText</span>
+        }
+    </p>
+}
+@helper RenderTextFieldWithHiddenLabel(string fieldLabel, string fieldName, string errorText, string className)
+    {
+    <p>
+        <label for="@fieldName" class="hide">@fieldLabel</label>
+        <input type="text" id="@fieldName" name="@fieldName" 
+               @GetClassString(fieldName, className, Page.Errors)
+               value="@HttpContext.Current.Request[fieldName]" />
+        @if (Page.Errors.Contains(fieldName))
+        {
+            <br /><span class="error">@errorText</span>
+        }
+    </p>
+}
+
+@helper RenderTextareaField(string fieldLabel, string fieldName, string errorText, string className)
+    {
+    <p>
+        <label for="@fieldName">@fieldLabel</label>
+        <textarea id="@fieldName" name="@fieldName" 
+                 @GetClassString(fieldName, className, Page.Errors)
+                  cols="30" rows="10">@HttpContext.Current.Request[fieldName]</textarea>
+        @if (Page.Errors.Contains(fieldName))
+        {
+            <br /><span class="error">@errorText</span>
+        }
+    </p>
+}
+
+    
+@helper TrySendForm()
+    {
+    if (Request.Url.AbsoluteUri.Contains("form-posted") == false)
+    {
+        Page.Errors = GetFormErrors();
+        if (Page.Errors.Count == 0)
+        {
+            Page.Errors.AddRange(TrySendMail(Page, GetMailVariables(Page)));
+
+            if (Page.Errors.Count == 0)
+            {
+                Response.Redirect(Page.FormVariables.RedirectUrl);
+            }
+            @RenderErrorMessage()
+        }
+        else
+        {
+            @RenderContactForm()
+        }
+    }
+    else
+    {
+        <p class="sent-confirmation">@Page.FormVariables.FormSentConfirmation</p>
+    } 
+}
+@functions 
+{
+    private static string GetClassString(string fieldName, string className, List<string> errors)
+    {
+        var classString = new StringBuilder(className);
+        if (errors.Contains(fieldName))
+        {
+            classString.Append(" error");
+        }
+
+        return classString.Length > 0 ? string.Format("class={0}", classString) : string.Empty;
+    }
+
+    private static List<string> GetFormErrors()
+    {
+        var errorFields = new List<string>();
+        foreach (string key in HttpContext.Current.Request.Form)
+        {
+            if (key.EndsWith("-req") && HttpContext.Current.Request.Form[key] == "")
+            {
+                errorFields.Add(key);
+            }
+            if (key.EndsWith("-req-mail")
+                && (HttpContext.Current.Request.Form[key] == ""
+                || System.Text.RegularExpressions.Regex.IsMatch(HttpContext.Current.Request.Form[key], @"[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?") == false))
+            {
+                errorFields.Add(key);
+            }
+        }
+        return errorFields;
+    }
+
+    private static MailVariables GetMailVariables(dynamic page)
+    {
+        var mailVariables = new MailVariables
+        {
+            Content = GetMailContent(page, page.FormVariables.MailIntroText),
+            From = page.FormVariables.MailFrom,
+            // To make sure your mail isn't marked as spam the from address
+            // is always the configured "from" address, make sure the domain 
+            // corresponds with your SMTP server configuration
+
+            FromName = HttpUtility.HtmlEncode(HttpContext.Current.Request[page.FormVariables.NameFieldName]),
+            ReplyTo = HttpUtility.HtmlEncode(HttpContext.Current.Request[page.FormVariables.EmailFieldName]),
+            Subject = page.FormVariables.MailSubject,
+            To = page.FormVariables.MailFrom,
+            ToName = page.FormVariables.MailFromName,
+            EnableSsl = page.FormVariables.EnableSsl
+        };
+
+        return mailVariables;
+    }
+
+
+    private static string GetMailContent(dynamic page, string mailIntroText)
+    {
+        var name = HttpUtility.HtmlEncode(HttpContext.Current.Request[page.FormVariables.NameFieldName]);
+        var email = HttpUtility.HtmlEncode(HttpContext.Current.Request[page.FormVariables.EmailFieldName]);
+        var address1 = HttpUtility.HtmlEncode(HttpContext.Current.Request[page.FormVariables.Address1FieldName]);
+        var address2 = HttpUtility.HtmlEncode(HttpContext.Current.Request[page.FormVariables.Address2FieldName]);
+        var message = HttpUtility.HtmlEncode(HttpContext.Current.Request[page.FormVariables.MessageFieldName]).Replace("\n", "<br />");
+        var mailContent = string.Empty;
+
+        if (page.Model.MailTemplate.GetType() != typeof(umbraco.MacroEngines.DynamicNull))
+        {
+            var mailTemplateProperty = page.Model.MailTemplate;
+            var mailTemplate = mailTemplateProperty.GetType() == typeof(umbraco.MacroEngines.DynamicXml)
+                                   ? mailTemplateProperty.ToXml().ToString().Trim()
+                                   : mailTemplateProperty.ToString();
+
+            if (mailTemplate != string.Empty)
+            {
+                mailTemplate = mailTemplate.Replace("%%SiteOwner%%", page.FormVariables.MailFromName);
+                mailTemplate = mailTemplate.Replace("%%Date%%", DateTime.Now.ToLongDateString());
+                mailTemplate = mailTemplate.Replace("%%Time%%", DateTime.Now.ToLongTimeString());
+                mailTemplate = mailTemplate.Replace("%%INTROTEXT%%", mailIntroText);
+                mailTemplate = mailTemplate.Replace("%%NAMELABEL%%", page.FormVariables.Name);
+                mailTemplate = mailTemplate.Replace("%%NAME%%", name);
+                mailTemplate = mailTemplate.Replace("%%EMAILLABEL%%", page.FormVariables.Email);
+                mailTemplate = mailTemplate.Replace("%%EMAIL%%", email);
+                mailTemplate = mailTemplate.Replace("%%MESSAGELABEL%%", page.FormVariables.Message);
+                mailTemplate = mailTemplate.Replace("%%MESSAGE%%", message);
+                mailTemplate = mailTemplate.Replace("%%AddressLine1%%", address1);
+                mailTemplate = mailTemplate.Replace("%%AddressLine2%%", address2);
+
+                mailContent = mailTemplate;
+            }
+        }
+
+        return mailContent;
+    }
+
+    private static IEnumerable<string> TrySendMail(dynamic page, MailVariables mailVariables)
+    {
+        var mailSent = SendMail(mailVariables);
+        if (mailSent == false)
+        {
+            page.Errors.Add("Other");
+        }
+
+        return page.Errors;
+    }
+
+    public static bool SendMail(MailVariables mailVariables)
+    {
+        try
+        {
+            var mailMsg = new MailMessage
+            {
+                From = new MailAddress(HttpUtility.HtmlEncode(mailVariables.From), HttpUtility.HtmlEncode(mailVariables.FromName)),
+                Subject = mailVariables.Subject,
+                Body = mailVariables.Content,
+                IsBodyHtml = true
+            };
+
+            mailMsg.To.Add(new MailAddress(HttpUtility.HtmlEncode(mailVariables.To), HttpUtility.HtmlEncode(mailVariables.ToName)));
+            mailMsg.Bcc.Add(new MailAddress(HttpUtility.HtmlEncode(mailVariables.From)));
+            mailMsg.ReplyToList.Add(new MailAddress(mailVariables.ReplyTo));
+
+            var smtpClient = new SmtpClient { EnableSsl = mailVariables.EnableSsl };
+
+            smtpClient.Send(mailMsg);
+            return true;
+        }
+        catch (Exception ex)
+        {
+            var message = string.Format("Error creating or sending contact mail, check if there is a mailFrom property on your document and that it has a value, or specify a MailFrom parameter on the macro call exception: {0}", ex.InnerException);
+            umbraco.BusinessLogic.Log.Add(umbraco.BusinessLogic.LogTypes.Error, -1, message);
+        }
+
+        return false;
+    }
+}

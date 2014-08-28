@@ -1,0 +1,26 @@
+﻿<footer id="mainFooter">
+    <nav id="footerNav">
+        <ul>
+            @{
+                var homeNode = Model.AncestorOrSelf("Home");
+                foreach(var page in homeNode.Children)
+                {
+                    if (page.footerLink)
+                    {
+                        var title = string.IsNullOrEmpty(page.pageTitle) ? page.Name : page.pageTitle;
+                        <li>
+                            <a href="@library.NiceUrl(page.Id)" 
+                            class="@Library.If(page.Id == Model.Id, "selected","")">@title</a>
+                        </li>
+                    }
+                }
+            }
+        </ul>
+    </nav>
+    <span id="footswordLink">
+        <a href="http://www.footsword.com" target="_blank">
+            &copy; FootSword Technologies @DateTime.Now.Year
+            <img  src="../resources/icons/FootSwordLogo.png" alt="Created by FootSword Technologies"/>
+        </a>
+    </span>
+</footer>

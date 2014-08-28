@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<imageIndex>
+  <image>
+    <originalFileName>Wymondham Garage Roof (2).jpg</originalFileName>
+    <size>878490</size>
+    <dateLastModified>Wed, 22 Aug 2012 09:49:31 GMT</dateLastModified>
+    <width>2592</width>
+    <height>1552</height>
+    <cachedImage>
+      <fileName>xe0qquqt.jpeg</fileName>
+      <dateCreated>Wed, 22 Aug 2012 09:58:27 GMT</dateCreated>
+      <dateLastAccessed>Thu, 06 Sep 2012 13:09:58 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <rotate>0</rotate>
+      <flip />
+      <colorMode />
+      <crop />
+      <width>800</width>
+      <height>800</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+    <cachedImage>
+      <fileName>geurzio3.jpeg</fileName>
+      <dateCreated>Wed, 22 Aug 2012 10:00:48 GMT</dateCreated>
+      <dateLastAccessed>Thu, 06 Sep 2012 12:31:25 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <rotate>0</rotate>
+      <flip />
+      <colorMode />
+      <crop />
+      <width>334</width>
+      <height>200</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+    <cachedImage>
+      <fileName>fccbd4ro.jpeg</fileName>
+      <dateCreated>Thu, 06 Sep 2012 12:41:15 GMT</dateCreated>
+      <dateLastAccessed>Thu, 06 Sep 2012 13:28:33 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <rotate>0</rotate>
+      <flip />
+      <colorMode />
+      <crop />
+      <width>501</width>
+      <height>300</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+    <cachedImage>
+      <fileName>ykruyun5.jpeg</fileName>
+      <dateCreated>Thu, 06 Sep 2012 12:46:13 GMT</dateCreated>
+      <dateLastAccessed>Thu, 06 Sep 2012 12:46:13 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <rotate>0</rotate>
+      <flip />
+      <colorMode />
+      <crop />
+      <width>200</width>
+      <height>120</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+    <cachedImage>
+      <fileName>e2sjsof4.jpeg</fileName>
+      <dateCreated>Thu, 06 Sep 2012 12:46:35 GMT</dateCreated>
+      <dateLastAccessed>Thu, 06 Sep 2012 13:03:48 GMT</dateLastAccessed>
+      <imageFormat>jpeg</imageFormat>
+      <compression>90</compression>
+      <rotate>0</rotate>
+      <flip />
+      <colorMode />
+      <crop />
+      <width>300</width>
+      <height>180</height>
+      <bgColor>#FFFFFF</bgColor>
+      <transparent>True</transparent>
+      <border>0</border>
+      <borderColor>#000000</borderColor>
+      <constrain>False</constrain>
+      <pad>False</pad>
+    </cachedImage>
+  </image>
+</imageIndex>
