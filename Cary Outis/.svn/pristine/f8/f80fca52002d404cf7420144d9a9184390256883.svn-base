@@ -1,0 +1,9 @@
+<h3>Test Image Macro</h3>
+@{
+    var thing = Model.secondTestImage;
+}
+<img src='@Library.MediaById(Model.homeImage).umbracoFile'  alt="test image" height="200"/>
+<img src="/ImageGen.ashx?height=200&image=@Library.MediaById(Model.homeImage).umbracoFile" alt="ImageGen version"/>
+<img src="@Model.secondTestImage" alt="Upload image" height="200"/>
+<img src="/ImageGen.ashx?height=200&image=@Model.secondTestImage" alt="Upload image"/>
+<img src="/ImageGen.ashx?height=200&image=@thing" alt="Upload image"/> <!-- This works as well, so that looks hopeful for a list.-->

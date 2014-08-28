@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE root[ 
+<!ELEMENT About ANY>
+<!ATTLIST About id ID #REQUIRED>
+<!ELEMENT Artwork ANY>
+<!ATTLIST Artwork id ID #REQUIRED>
+<!ELEMENT Gallery ANY>
+<!ATTLIST Gallery id ID #REQUIRED>
+<!ELEMENT Genre ANY>
+<!ATTLIST Genre id ID #REQUIRED>
+<!ELEMENT Home ANY>
+<!ATTLIST Home id ID #REQUIRED>
+<!ELEMENT Master ANY>
+<!ATTLIST Master id ID #REQUIRED>
+<!ELEMENT News ANY>
+<!ATTLIST News id ID #REQUIRED>
+<!ELEMENT SingleWorkshop ANY>
+<!ATTLIST SingleWorkshop id ID #REQUIRED>
+<!ELEMENT Workshops ANY>
+<!ATTLIST Workshops id ID #REQUIRED>
+
+]>
+<root id="-1">
+  <Home id="1058" parentID="-1" level="1" writerID="0" creatorID="0" nodeType="1044" template="1045" sortOrder="0" createDate="2012-11-19T16:09:25" updateDate="2012-11-24T13:24:45" nodeName="Home" urlName="home" writerName="admin" creatorName="admin" path="-1,1058" isDoc="">
+    <Gallery id="1059" parentID="1058" level="2" writerID="0" creatorID="0" nodeType="1048" template="1049" sortOrder="0" createDate="2012-11-19T16:15:30" updateDate="2012-11-19T16:17:45" nodeName="Gallery" urlName="gallery" writerName="admin" creatorName="admin" path="-1,1058,1059" isDoc="" />
+    <About id="1060" parentID="1058" level="2" writerID="0" creatorID="0" nodeType="1052" template="1053" sortOrder="1" createDate="2012-11-19T16:18:04" updateDate="2012-11-19T16:23:27" nodeName="About Cary" urlName="about-cary" writerName="admin" creatorName="admin" path="-1,1058,1060" isDoc="" />
+    <Workshops id="1062" parentID="1058" level="2" writerID="0" creatorID="0" nodeType="1054" template="1055" sortOrder="3" createDate="2012-11-19T16:26:19" updateDate="2012-11-19T16:27:23" nodeName="Workshops" urlName="workshops" writerName="admin" creatorName="admin" path="-1,1058,1062" isDoc="" />
+    <siteName>Cary Outis</siteName>
+    <homeImage>1064</homeImage>
+    <secondTestImage>/media/69/rowansept2012single.jpg</secondTestImage>
+  </Home>
+</root>
